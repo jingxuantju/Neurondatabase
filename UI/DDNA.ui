@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1104</width>
+    <height>767</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>191</width>
+      <height>591</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>.System San Francisco Display</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>神经元元模型</string>
+    </property>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>30</y>
+       <width>181</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>.System San Francisco Display</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>神经元层次</string>
+     </property>
+     <widget class="QPushButton" name="LIFButton">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LIF</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="IZButton">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Iz</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="PRButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>50</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PR</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="HHButton">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>HH</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="AIFButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>80</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>AIF</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="EIFButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>80</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EIF</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>150</y>
+       <width>181</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>.System San Francisco Display</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>间室层次</string>
+     </property>
+     <widget class="QPushButton" name="somaButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>胞体</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="dendButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>树突</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="KButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>50</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>K+通道</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="NaButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Na+通道</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="KCButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>80</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>K-C通道</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="CaButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>80</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ca+通道</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>290</y>
+       <width>181</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>.System San Francisco Display</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>计算元件层次</string>
+     </property>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>加法器</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_14">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>乘法器</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_15">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>50</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LUT</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_16">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>选择器</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_17">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>80</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EXP</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_18">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>80</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>保持器</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>540</y>
+       <width>111</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>运行</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_6">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>60</y>
+      <width>261</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>.System San Francisco Display</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>参数配置</string>
+    </property>
+    <widget class="QGroupBox" name="groupBox_7">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>30</y>
+       <width>261</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>对象查看器</string>
+     </property>
+     <widget class="QTableWidget" name="table">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>241</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.System San Francisco Display</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <row>
+       <property name="text">
+        <string>行数</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>对象</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>类</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_8">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>210</y>
+       <width>251</width>
+       <height>261</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>属性编辑器</string>
+     </property>
+     <widget class="QStackedWidget" name="stackedWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>231</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="page"/>
+      <widget class="QWidget" name="page_5">
+       <widget class="QLineEdit" name="lineEdit_10">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>.System San Francisco Display</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>对象Id</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelb_3">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>100</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelname_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>LIF</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labela_4">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>70</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_23">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Vth</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelname_5">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>40</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_24">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>.System San Francisco Display</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>I</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_6">
+       <widget class="QLabel" name="labela_3">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>60</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_6">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>.System San Francisco Display</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>对象Id</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_16">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>180</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>.System San Francisco Display</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>I</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelb_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>90</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_17">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>90</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>b</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labeld_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>150</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelI_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>180</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_18">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>150</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>.System San Francisco Display</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>d</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_19">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>60</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>.System San Francisco Display</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>a</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelname">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>30</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelc_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>120</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_20">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>120</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>.System San Francisco Display</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>c</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelname_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Izhevich</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_9">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>480</y>
+       <width>241</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>连接关系编辑器</string>
+     </property>
+     <widget class="QLineEdit" name="lineEdit_13">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>90</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.System San Francisco Display</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>b</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_14">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.System San Francisco Display</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>对象Id</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_15">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.System San Francisco Display</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>a</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_10">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>580</y>
+      <width>551</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>.System San Francisco Display</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>存储位置</string>
+    </property>
+    <widget class="QLineEdit" name="lineEdit_7">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>30</y>
+       <width>431</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>D:\FPGA\ku\dataset</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>10</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>.System San Francisco Display</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>神经元模型智能库</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>60</y>
+      <width>551</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>.System San Francisco Display</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>展示界面</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1104</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
