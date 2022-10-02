@@ -2,6 +2,7 @@ from neuron.neuron import *
 import matplotlib.pyplot as plt
 from pylab import *
 mpl.rcParams['font.sans-serif'] = ['SimSun']
+matplotlib.rcParams['axes.unicode_minus']=False
 
 if __name__ == '__main__':
     class SelfAddingUnit(Component):
@@ -18,11 +19,11 @@ if __name__ == '__main__':
     manager = Manager()
     comp1 = HHNeuron(manager, 'comp1', 20)
     comp2 = HHNeuron(manager, 'comp2', 0)
-    syn1 = synapseNeuron(manager,'syn1', [0.2])
+    syn1 = synapseNeuron(manager,'syn1', [0.5])
     manager.link_output_input(comp1, syn1)
     manager.link_output_input(syn1, comp2, tab='I')
     manager.link_output_input(comp2, syn1, tab='houmo')
-    result = manager.start_stimulation(10000)
+    result = manager.start_stimulation(8000)
     COMP4_RESULT = []
     COMP5_RESULT = []
     COMP6_RESULT = []

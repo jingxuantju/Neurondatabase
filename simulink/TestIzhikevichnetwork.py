@@ -79,7 +79,7 @@ if __name__ == '__main__':
     line1, = plt.plot(COMP4_RESULT)
     line2, = plt.plot(COMP5_RESULT)
     line3, = plt.plot(COMP6_RESULT)
-    plt.legend(handles=[line1, line2, line3], labels=['Ina', 'Ik', 'Il'], loc='upper left', fontsize=16)
+    plt.legend(handles=[line1, line2, line3], labels=['第一层', '第二层', '第三层'], loc='upper left', fontsize=14)
     plt.xlabel('时间(ms)', fontsize=18)  # label = name of label
     # plt.ylabel('电流(mA)', fontsize=18)  # label = name of label
     plt.ylabel('电压(mV)', fontsize=18)  # label = name of label
@@ -88,7 +88,7 @@ if __name__ == '__main__':
     line1, = plt.plot(COMP4_RESULT_PULSE)
     line2, = plt.plot(COMP5_RESULT_PULSE)
     line3, = plt.plot(COMP6_RESULT_PULSE)
-    plt.legend(handles=[line1, line2, line3], labels=['Ina', 'Ik', 'Il'], loc='upper left', fontsize=16)
+    plt.legend(handles=[line1, line2, line3], labels=['第一层', '第二层', '第三层'], loc='upper left', fontsize=14)
     plt.xlabel('时间(ms)', fontsize=18)  # label = name of label
     # plt.ylabel('电流(mA)', fontsize=18)  # label = name of label
     plt.ylabel('放电脉冲', fontsize=18)  # label = name of label

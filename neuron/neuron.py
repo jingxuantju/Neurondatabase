@@ -370,7 +370,7 @@ class HHNeuron(Neuron):
         self.m = self.m + 0.01 * (self.am * (1 - self.m) - self.bm * self.m)
         self.h = self.h + 0.01 * (self.ah * (1 - self.h) - self.bh * self.h)
         self.n = self.n + 0.01 * (self.an * (1 - self.n) - self.bn * self.n)
-        self.output = v + 0.01 * (self.I + -
+        self.output = v + 0.01 * (self.I + Isyn -
                                     self.gna * self.h * (v - self.vna) * math.pow(self.m, 3) -
                                     self.gk * (v - self.vk) * math.pow(self.n, 4) -
                                     self.gl * (v - self.vl)) / self.c
@@ -546,6 +546,31 @@ class synapseNeuron(Component):
         self.output = 0
         for i in range(len(Vpost)):
             self.output += self.gs[i] * (Vpre - Vpost[i])
+        return self.output
+
+class CsynapseNeuron(Component):
+    tab = 'houmo'
+    def __init__(self, manager, name, gs):
+        super().__init__(manager, name=name)
+        self.gs = gs
+        self.s = 0
+        self.alpha = 2
+        self.beta = 1
+
+
+    def function(self):
+        Vpost = []
+        for i in range(len(self.inputs_tab)):
+            if self.inputs_tab[i] == synapseNeuron.tab:
+                Vpost.append(self.inputs[i])
+            else:
+                Vpre = self.inputs[i]
+
+        self.inputs.clear()
+        self.output = 0
+        self.s = self.s + 0.01 * (self.alpha * (1 - self.s) - self.beta * self.s)
+        for i in range(len(Vpost)):
+            self.output += self.gs[i] * self.s * (Vpre - Vpost[i])
         return self.output
 
 class NaIonComponent(Component):
