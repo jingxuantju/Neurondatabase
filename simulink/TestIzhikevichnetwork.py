@@ -75,17 +75,25 @@ if __name__ == '__main__':
             COMP6_RESULT_PULSE.append(0)
     figure = plt.figure()
     # plt.plot(COMP4_RESULT)
+    plt.subplot(211)
     line1, = plt.plot(COMP4_RESULT)
     line2, = plt.plot(COMP5_RESULT)
     line3, = plt.plot(COMP6_RESULT)
-    # line1, = plt.plot(COMP4_RESULT_PULSE)
-    # line2, = plt.plot(COMP5_RESULT_PULSE)
-    # line3, = plt.plot(COMP6_RESULT_PULSE)
-    # plt.legend(handles=[line1, line2, line3], labels=['Ina', 'Ik', 'Il'], loc='upper right', fontsize=16)
+    plt.legend(handles=[line1, line2, line3], labels=['Ina', 'Ik', 'Il'], loc='upper left', fontsize=16)
     plt.xlabel('时间(ms)', fontsize=18)  # label = name of label
     # plt.ylabel('电流(mA)', fontsize=18)  # label = name of label
     plt.ylabel('电压(mV)', fontsize=18)  # label = name of label
     plt.title('(a)')
+    plt.subplot(212)
+    line1, = plt.plot(COMP4_RESULT_PULSE)
+    line2, = plt.plot(COMP5_RESULT_PULSE)
+    line3, = plt.plot(COMP6_RESULT_PULSE)
+    plt.legend(handles=[line1, line2, line3], labels=['Ina', 'Ik', 'Il'], loc='upper left', fontsize=16)
+    plt.xlabel('时间(ms)', fontsize=18)  # label = name of label
+    # plt.ylabel('电流(mA)', fontsize=18)  # label = name of label
+    plt.ylabel('放电脉冲', fontsize=18)  # label = name of label
+    # plt.title('(a)')
+    figure.tight_layout()
     figure.show()
     plt.show()
     print(result)
