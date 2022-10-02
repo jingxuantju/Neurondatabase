@@ -24,7 +24,7 @@ class LIFNeuron(Neuron):
             elif self.inputs_tab[i] == "self":
                 v += self.inputs[i]
         self.inputs.clear()
-        output = v + 0.01 * (-40 + v + self.Rm * (self.I + Isyn))
+        output = v + 0.01 * (-40 - v + self.Rm * (self.I + Isyn))
         if output > 40:
             output = -40
         self.output = output
@@ -370,7 +370,7 @@ class HHNeuron(Neuron):
         self.m = self.m + 0.01 * (self.am * (1 - self.m) - self.bm * self.m)
         self.h = self.h + 0.01 * (self.ah * (1 - self.h) - self.bh * self.h)
         self.n = self.n + 0.01 * (self.an * (1 - self.n) - self.bn * self.n)
-        self.output = v + 0.01 * (self.I + Isyn-
+        self.output = v + 0.01 * (self.I + -
                                     self.gna * self.h * (v - self.vna) * math.pow(self.m, 3) -
                                     self.gk * (v - self.vk) * math.pow(self.n, 4) -
                                     self.gl * (v - self.vl)) / self.c
@@ -545,7 +545,7 @@ class synapseNeuron(Component):
         self.inputs.clear()
         self.output = 0
         for i in range(len(Vpost)):
-            self.output += self.gs[i] * (Vpost[i] - Vpre)
+            self.output += self.gs[i] * (Vpre - Vpost[i])
         return self.output
 
 class NaIonComponent(Component):
