@@ -20,15 +20,15 @@ if __name__ == '__main__':
 
 
     manager = Manager()
-    comp = [[0 for i in range(20)] for j in range(3)]
-    syn = [[0 for i in range(20)] for j in range(3)]
+    comp = [[0 for i in range(100)] for j in range(3)]
+    syn = [[0 for i in range(100)] for j in range(3)]
     para1 = []
     para2 = []
-    for i in range(20):
-        para1.append(0.05)
-        para2.append(0.25)
+    for i in range(100):
+        para1.append(0.005)
+        para2.append(0.015)
     for i in range(3):
-        for j in range(20):
+        for j in range(100):
             if (i == 0):
                 a = random.randint(0, 4)
                 if (a != 0):
@@ -43,9 +43,9 @@ if __name__ == '__main__':
                     comp[i][j] = IzhikevichNeuron(manager, 'comp' + str(i) + str(j), 0, 0.1, 0.2, -65, 8)
                 syn[i][j] = synapseNeuron(manager, 'syn' + str(i) + str(j), para2)
     for i in range(2):
-        for j in range(20):
+        for j in range(100):
             manager.link_output_input(comp[i][j], syn[i][j])
-            for k in range(20):
+            for k in range(100):
                 a = random.randint(0, 5)
                 if (a == 0):
                     manager.link_output_input(syn[i][j], comp[i+1][k], tab='I')
