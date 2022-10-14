@@ -190,7 +190,7 @@
   <widget class="QPushButton" name="ackButton">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>220</x>
      <y>250</y>
      <width>93</width>
      <height>28</height>

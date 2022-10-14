@@ -1,4 +1,6 @@
 from neuron.neuron import *
+from neuron.comp import *
+
 import matplotlib.pyplot as plt
 from pylab import *
 mpl.rcParams['font.sans-serif'] = ['SimSun']
@@ -16,7 +18,7 @@ if __name__ == '__main__':
 
 
     manager = Manager()
-    Ina1 = NaIonHHComponent(manager, 'Ina1')
+    Ina1 = NaIonHHComponent(manager, 'Ina1', 120, 120)
     Ik1 = KIonHHComponent(manager, 'Ik1')
     Il1 = lIonHHComponent(manager, 'Il1')
     soma1 = HHsomaNeuron(manager, 'soma1', 10.0)
@@ -35,9 +37,9 @@ if __name__ == '__main__':
     COMP7_RESULT = []
     for dictionary in result:
         COMP4_RESULT.append(dictionary['soma1'])
-        # COMP5_RESULT.append(dictionary['Ina1'])
-        # COMP6_RESULT.append(dictionary['Ik1'])
-        # COMP7_RESULT.append(dictionary['Il1'])
+        COMP5_RESULT.append(dictionary['Ina1'])
+        COMP6_RESULT.append(dictionary['Ik1'])
+        COMP7_RESULT.append(dictionary['Il1'])
     figure = plt.figure()
     plt.plot(COMP4_RESULT)
     # line1, = plt.plot(COMP5_RESULT)

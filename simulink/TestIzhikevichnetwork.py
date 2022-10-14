@@ -1,4 +1,6 @@
 from neuron.neuron import *
+from neuron.realNeuron import *
+from neuron.comp import *
 import matplotlib.pyplot as plt
 from pylab import *
 mpl.rcParams['font.sans-serif'] = ['SimSun']

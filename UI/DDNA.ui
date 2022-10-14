@@ -134,7 +134,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>EIF</string>
+       <string>ML</string>
       </property>
      </widget>
     </widget>
@@ -233,7 +233,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>K-C通道</string>
+       <string>Cl-通道</string>
       </property>
      </widget>
      <widget class="QPushButton" name="CaButton">
@@ -368,17 +368,104 @@
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="applyButton">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>100</x>
        <y>540</y>
-       <width>111</width>
+       <width>81</width>
        <height>41</height>
       </rect>
      </property>
      <property name="text">
       <string>运行</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_11">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>420</y>
+       <width>181</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>.System San Francisco Display</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>生理神经元层次</string>
+     </property>
+     <widget class="QPushButton" name="LIFButton_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>锥体细胞</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="IZButton_2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>颗粒细胞</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="PRButton_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>50</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>浦肯野细胞</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="HHButton_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>胶质细胞</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="deleteButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>540</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>清空</string>
      </property>
     </widget>
    </widget>
@@ -427,11 +514,6 @@
         <pointsize>12</pointsize>
        </font>
       </property>
-      <row>
-       <property name="text">
-        <string>行数</string>
-       </property>
-      </row>
       <column>
        <property name="text">
         <string>对象</string>
@@ -575,7 +657,7 @@
        </widget>
       </widget>
       <widget class="QWidget" name="page_6">
-       <widget class="QLabel" name="labela_3">
+       <widget class="QLabel" name="labela">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -626,7 +708,7 @@
          <string>I</string>
         </property>
        </widget>
-       <widget class="QLabel" name="labelb_2">
+       <widget class="QLabel" name="labelb">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -652,7 +734,7 @@
          <string>b</string>
         </property>
        </widget>
-       <widget class="QLabel" name="labeld_2">
+       <widget class="QLabel" name="labeld">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -665,7 +747,7 @@
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="labelI_2">
+       <widget class="QLabel" name="labelI">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -729,7 +811,7 @@
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="labelc_2">
+       <widget class="QLabel" name="labelc">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -917,6 +999,16 @@
     <property name="title">
      <string>展示界面</string>
     </property>
+    <widget class="QGraphicsView" name="graphicsView">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>531</width>
+       <height>481</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
