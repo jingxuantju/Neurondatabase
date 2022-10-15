@@ -126,6 +126,8 @@ if __name__ == '__main__':
     V_GPE_array = np.array(gpe_RESULT)
     V_GPI_array = np.array(gpi_RESULT)
     V_TH_array = np.array(th_RESULT)
+    np.savez('pd0', V_STN_array=V_STN_array, V_GPE_array=V_GPE_array, V_GPI_array=V_GPI_array, V_TH_array=V_TH_array)
+
     SPK_STN = np.where(V_STN_array > 10, 1, 0)
     SPK_GPE = np.where(V_GPE_array > 10, 1, 0)
     SPK_GPI = np.where(V_GPI_array > 10, 1, 0)

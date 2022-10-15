@@ -122,15 +122,15 @@ if __name__ == '__main__':
         gpe_RESULT.append(gpe_R)
         gpi_RESULT.append(gpi_R)
         th_RESULT.append(th_R)
-    V_STN_array = np.array(stn_RESULT)
-    V_GPE_array = np.array(gpe_RESULT)
-    V_GPI_array = np.array(gpi_RESULT)
-    V_TH_array = np.array(th_RESULT)
-    SPK_STN = np.where(V_STN_array > 10, 1, 0)
-    SPK_GPE = np.where(V_GPE_array > 10, 1, 0)
-    SPK_GPI = np.where(V_GPI_array > 10, 1, 0)
-    SPK_TH = np.where(V_TH_array > 10, 1, 0)
-
+    V1_STN_array = np.array(stn_RESULT)
+    V1_GPE_array = np.array(gpe_RESULT)
+    V1_GPI_array = np.array(gpi_RESULT)
+    V1_TH_array = np.array(th_RESULT)
+    SPK_STN = np.where(V1_STN_array > 10, 1, 0)
+    SPK_GPE = np.where(V1_GPE_array > 10, 1, 0)
+    SPK_GPI = np.where(V1_GPI_array > 10, 1, 0)
+    SPK_TH = np.where(V1_TH_array > 10, 1, 0)
+    np.savez('pd1', V1_STN_array=V1_STN_array, V1_GPE_array=V1_GPE_array, V1_GPI_array=V1_GPI_array, V1_TH_array=V1_TH_array)
     # Get the index of a scatter map
     indexX_STN = []
     indexY_STN = []
@@ -172,7 +172,7 @@ if __name__ == '__main__':
     plt.ylabel('STN', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.subplot(412)
     # line2 = plot(V_STN_array[1][2000: t_span])
-    line2 = plot(V_STN_array[1], c='k')
+    line2 = plot(V1_STN_array[1], c='k')
     plt.yticks(fontproperties='Times New Roman', size=14)
     plt.xticks(fontproperties='Times New Roman', size=14)
     plt.xlim(2000, t_span)
@@ -189,7 +189,7 @@ if __name__ == '__main__':
     plt.ylabel('GPE', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.subplot(414)
     # line2 = plot(V_STN_array[1][2000: t_span])
-    line4 = plot(V_GPE_array[1], c='k')
+    line4 = plot(V1_GPE_array[1], c='k')
     plt.yticks(fontproperties='Times New Roman', size=14)
     plt.xticks(fontproperties='Times New Roman', size=14)
     plt.xlim(2000, t_span)
@@ -210,7 +210,7 @@ if __name__ == '__main__':
     plt.ylabel('GPI', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.subplot(412)
     # line2 = plot(V_STN_array[1][2000: t_span])
-    line6 = plot(V_GPI_array[1], c='k')
+    line6 = plot(V1_GPI_array[1], c='k')
     plt.yticks(fontproperties='Times New Roman', size=14)
     plt.xticks(fontproperties='Times New Roman', size=14)
     plt.xlim(2000, t_span)
@@ -227,7 +227,7 @@ if __name__ == '__main__':
     plt.ylabel('TH', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.subplot(414)
     # line2 = plot(V_STN_array[1][2000: t_span])
-    line8 = plot(V_TH_array[1], c='k')
+    line8 = plot(V1_TH_array[1], c='k')
     plt.yticks(fontproperties='Times New Roman', size=14)
     plt.xticks(fontproperties='Times New Roman', size=14)
     plt.xlim(2000, t_span)
