@@ -1,6 +1,7 @@
 from simulink.component import Component, Manager
 import math
 import numpy as np
+import random
 
 class Neuron(Component):
 
@@ -34,8 +35,8 @@ class LIFNeuron(Neuron):
 class IzhikevichNeuron(Neuron):
     def __init__(self, manager: Manager, name, I, a, b, c, d, dt=0.1):
         super().__init__(manager, name=name)
-        self.output = -70
-        self.u = 0
+        self.output = random.randint(-75,-30)
+        self.u = random.randint(-10,0)
         self.I = I
         self.a = a
         self.b = b
