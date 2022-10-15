@@ -83,25 +83,29 @@ if __name__ == '__main__':
     plt.xlabel('频率(Hz)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.ylabel('功率', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 
+    xr = range(0, 10001, 2000)
     plt.subplot(234)
     plt.plot(Vmean_stn[10000:20000])
     plt.plot(V1mean_stn[10000:20000])
+    plt.ylim(-81, -29)
     plt.yticks(fontproperties='Times New Roman', size=14)
-    plt.xticks(fontproperties='Times New Roman', size=14)
+    plt.xticks(xr, range(2000, 3001, 200), fontproperties='Times New Roman', size=14)
     plt.xlabel('时间(ms)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.ylabel('X', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.subplot(235)
     plt.plot(Vmean_gpe[10000:20000])
     plt.plot(V1mean_gpe[10000:20000])
+    plt.ylim(-81, -29)
     plt.yticks(fontproperties='Times New Roman', size=14)
-    plt.xticks(fontproperties='Times New Roman', size=14)
+    plt.xticks(xr, range(2000, 3001, 200), fontproperties='Times New Roman', size=14)
     plt.xlabel('时间(ms)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.ylabel('X', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.subplot(236)
     plt.plot(Vmean_gpi[10000:20000])
     plt.plot(V1mean_gpi[10000:20000])
+    plt.ylim(-81, -29)
     plt.yticks(fontproperties='Times New Roman', size=14)
-    plt.xticks(fontproperties='Times New Roman', size=14)
+    plt.xticks(xr, range(2000, 3001, 200), fontproperties='Times New Roman', size=14)
     plt.xlabel('时间(ms)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     plt.ylabel('X', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
     fig5.tight_layout()
