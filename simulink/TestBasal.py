@@ -10,6 +10,8 @@ import cv2
 from scipy import misc
 import imageio
 
+
+
 if __name__ == '__main__':
     dt = 0.1
     taot_sn_ge = 2 / dt
@@ -56,6 +58,7 @@ if __name__ == '__main__':
     Istim = data1['Istim'].tolist()[0]
     Istim = [i * 5 for i in Istim]
     IstimC = [0 for i in range(100)]
+
     manager = Manager()
     for i in range(100):
         stn[i] = IzhikevichNeuron(manager, 'stn' + str(i), 1, 0.01, 0.26, -55, 3)
@@ -99,7 +102,7 @@ if __name__ == '__main__':
                 manager.link_output_input(gpi_syn_tc[i], th[j], tab='I')
                 manager.link_output_input(th[j], gpi_syn_tc[i], tab='houmo')
 
-    result = manager.start_stimulation(6000)
+    result = manager.start_stimulation(600)
     stn_RESULT = []
     gpe_RESULT = []
     gpi_RESULT = []
@@ -142,8 +145,10 @@ if __name__ == '__main__':
         #     COMP6_RESULT_PULSE.append(0)
     plt.figure(1)
 
+    stn_s = np.fft.fft(stn_RESULT)
+    plt.plot(stn_s)
 
-    imageio.imwrite('1.png', GPI_SPK)
+    # imageio.imwrite('1.png', GPI_SPK)
     # scipy.misc.imsave('a.jpg', a)
     # cv2.waitKey(0)
     # plt.figure(2)

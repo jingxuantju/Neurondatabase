@@ -130,7 +130,7 @@ if __name__ == '__main__':
     SPK_GPE = np.where(V1_GPE_array > 10, 1, 0)
     SPK_GPI = np.where(V1_GPI_array > 10, 1, 0)
     SPK_TH = np.where(V1_TH_array > 10, 1, 0)
-    np.savez('pd1', V1_STN_array=V1_STN_array, V1_GPE_array=V1_GPE_array, V1_GPI_array=V1_GPI_array, V1_TH_array=V1_TH_array)
+    # np.savez('pd1', V1_STN_array=V1_STN_array, V1_GPE_array=V1_GPE_array, V1_GPI_array=V1_GPI_array, V1_TH_array=V1_TH_array)
     # Get the index of a scatter map
     indexX_STN = []
     indexY_STN = []
