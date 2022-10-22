@@ -22,36 +22,37 @@ if __name__ == '__main__':
 
 
     manager = Manager()
-    comp = [[0 for i in range(100)] for j in range(3)]
-    syn = [[0 for i in range(100)] for j in range(3)]
+    num = 10
+    comp = [[0 for i in range(num)] for j in range(3)]
+    syn = [[0 for i in range(num)] for j in range(3)]
     para1 = []
     para2 = []
-    for i in range(100):
-        para1.append(0.005)
-        para2.append(0.015)
+    for i in range(num):
+        para1.append(0.02)
+        para2.append(0.03)
     for i in range(3):
-        for j in range(100):
+        for j in range(num):
             if (i == 0):
                 a = random.randint(0, 4)
                 if (a != 0):
                     comp[i][j] = IzhikevichNeuron(manager, 'comp' + str(i) + str(j), 10, 0.02, 0.2, -65, 2)
                 else:
                     comp[i][j] = IzhikevichNeuron(manager, 'comp' + str(i) + str(j), 10, 0.1, 0.2, -65, 8)
-                syn[i][j] = synapseNeuron(manager, 'syn' + str(i) + str(j), para1)
+                syn[i][j] = STDPsynapseNeuron(manager, 'syn' + str(i) + str(j), para1)
             else:
                 if (a != 0):
                     comp[i][j] = IzhikevichNeuron(manager, 'comp' + str(i) + str(j), 0, 0.02, 0.2, -50, 2)
                 else:
                     comp[i][j] = IzhikevichNeuron(manager, 'comp' + str(i) + str(j), 0, 0.1, 0.2, -65, 8)
-                syn[i][j] = synapseNeuron(manager, 'syn' + str(i) + str(j), para2)
+                syn[i][j] = STDPsynapseNeuron(manager, 'syn' + str(i) + str(j), para2)
     for i in range(2):
-        for j in range(100):
+        for j in range(num):
             manager.link_output_input(comp[i][j], syn[i][j])
-            for k in range(100):
+            for k in range(num):
                 a = random.randint(0, 5)
-                if (a == 0):
-                    manager.link_output_input(syn[i][j], comp[i+1][k], tab='I')
-                    manager.link_output_input(comp[i+1][k], syn[i][j], tab='houmo')
+                # if (a == 0):
+                manager.link_output_input(syn[i][j], comp[i+1][k], tab='I')
+                manager.link_output_input(comp[i+1][k], syn[i][j], tab='houmo')
     result = manager.start_stimulation(2000)
     COMP4_RESULT = []
     COMP5_RESULT = []
