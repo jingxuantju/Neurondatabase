@@ -396,4 +396,68 @@ class HHNeuron(Neuron):
                self.gna * self.h * math.pow(self.m, 3), self.gk * math.pow(self.n, 4)
 
 
+class PurkinjeNeuron(Neuron):
+    def __init__(self, manager, name, I=25, dt=0.01):
+        super().__init__(manager, name=name)
+        self.I = I
+        self.vna = 50
+        self.vk = -95
+        self.vca = 125
+        self.vl = -70
+        self.vM = -95
+        self.gna = 125
+        self.gk = 10
+        self.gca = 1
+        self.gl = 2
+        self.gM = 0.75
+        self.C = 1
+        self.c = 0.1
+        self.h = 0.1
+        self.n = 0.1
+        self.M = 0.1
+        self.tao_n = 0
+        self.tao_h = 0
+        self.alpha_c = 0
+        self.beta_c = 0
+        self.alpha_M = 0
+        self.beta_M = 0
+        self.m_ = 0
+        self.n_ = 0
+        self.h_ = 0
+        self.dt = dt
 
+    def function(self):
+        v = 0
+        Isyn = 0
+        for i in range(len(self.inputs_tab)):
+            if self.inputs_tab[i] == "I":
+                Isyn += self.inputs[i]
+            else:
+                v += self.inputs[i]
+        self.inputs.clear()
+        if v <= -10:
+            self.tao_n = 4.375 * math.exp((v + 10) / 10) + 0.25
+        else:
+            self.tao_n = 4.375 * math.exp(-(v + 10) / 10) + 0.25
+        self.n_ = 1 / (1 + math.exp(-(v + 29.5) / 10))
+        self.n = self.n + self.dt * ((self.n_ - self.n) / self.tao_n)
+        self.tao_h = 0.15 + 1.15 / (1 + math.exp((v + 33.5) / 15))
+        self.h_ = 1 / (1 + math.exp((v + 59.4) / 10.7))
+        self.h = self.h + self.dt * ((self.h_ - self.h) / self.tao_h)
+        self.alpha_c = 1.6 / (1 + math.exp(-0.072 * (v - 5)))
+        self.beta_c = 0.02 * (v + 8.9) / (math.exp((v + 8.9) / 5) - 1)
+        self.c = self.c + self.dt *(self.alpha_c * (1 - self.c) - self.beta_c * self.c)
+        self.alpha_M = 0.02 / (1 + math.exp(-(v + 20) / 5))
+        self.beta_M = 0.01 * math.exp(-(v + 43) / 18)
+        self.M = self.M + self.dt * (self.alpha_M * (1 - self.M - self.beta_M * self.M))
+        self.m_ = 1 / (1 + math.exp(-(v + 34.5) / 10))
+        self.output = v + self.dt * (self.I + Isyn -
+                                    self.gna * self.h * (v - self.vna) * math.pow(self.m_, 3) -
+                                    self.gk * (v - self.vk) * math.pow(self.n, 4) -
+                                    self.gca * (v - self.vca) * math.pow(self.c, 2) -
+                                    self.gM * (v - self.vM) * self.M -
+                                    self.gl * (v - self.vl)) / self.C
+        return self.output
+
+    def record(self):
+        return self.output, self.h, self.n, self.m_, self.n_,

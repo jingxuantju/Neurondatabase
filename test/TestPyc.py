@@ -17,8 +17,8 @@ if __name__ == '__main__':
 
 
     manager = Manager()
-    comp1 = PyramidalNeuron(manager, 'comp1', 51.5)
-    result = manager.start_stimulation(5000)
+    comp1 = PurkinjeNeuron(manager, 'comp1',26)
+    result = manager.start_stimulation(20000)
     COMP4_RESULT = []
     COMP5_RESULT = []
     COMP6_RESULT = []

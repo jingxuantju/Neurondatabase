@@ -223,6 +223,82 @@ class CsynapseNeuron(Component):
             self.output += self.gs[i] * self.s * (Vpre - Vpost[i])
         return self.output
 
+class STDPsynapseNeuron(Component):
+    tab = 'houmo'
+    def __init__(self, manager, name, gs, Vth=10):
+        super().__init__(manager, name=name)
+        self.gs = gs
+        self.Vth=Vth
+        self.preSpikeInterval = 0
+        # self.postSpikeInterval = []
+        # for num in range(len(gs)):
+        #     self.postSpikeInterval.append(0)
+        self.postSpikeInterval = [0 for i in range(len(gs))]
+
+    def function(self):
+        Vpost = []
+        Vpre = 0
+        for i in range(len(self.inputs_tab)):
+            if self.inputs_tab[i] == synapseNeuron.tab:
+                Vpost.append(self.inputs[i])
+            else:
+                Vpre = self.inputs[i]
+
+        self.inputs.clear()
+        self.output = 0
+
+        for i in range(len(Vpost)):
+            self.output += self.gs[i] * (Vpre - Vpost[i])
+
+        # condition init
+        preSpike = False
+        postSpike = []
+        for num in range(len(self.postSpikeInterval)):
+            postSpike.append(False)
+        if Vpre > self.Vth:
+            preSpike = True
+        for num in range(len(Vpost)):
+            print(num, len(self.postSpikeInterval),len(Vpost))
+            if Vpost[num] > self.Vth:
+                postSpike[num] = True
+
+        # interval
+        self.preSpikeInterval += 1
+        if preSpike:
+            self.preSpikeInterval = 0
+        for num in range(len(self.postSpikeInterval)):
+            self.postSpikeInterval[num] += 1
+            if postSpike[num]:
+                self.postSpikeInterval[num] = 0
+
+        # if enhanced
+        for num in range(len(self.postSpikeInterval)):
+            isSpike = postSpike[num]
+            if isSpike:
+                interval = self.preSpikeInterval
+                if interval<100 and interval>10:
+                    self.gs[i] = self.gs[i] + math.exp(-interval / 100)
+                    if (self.gs[i] > 0.04):
+                        self.gs[i] = 0.04
+                    elif (self.gs[i] < 0.01):
+                        self.gs[i] = 0.01
+
+
+        # if weaken
+        for num in range(len(self.postSpikeInterval)):
+            isSpike = preSpike
+            if isSpike:
+                interval = self.postSpikeInterval[num]
+                if interval<100 and interval>10:
+                    self.gs[i] = min(self.gs[i] - 0.4 * math.exp(-interval / 100), 0.01)
+                    if (self.gs[i] > 0.04):
+                        self.gs[i] = 0.04
+                    elif (self.gs[i] < 0.01):
+                        self.gs[i] = 0.01
+
+        return self.output
+
+
 class NaIonComponent(Component):
     def __init__(self, manager, name):
         super().__init__(manager, name=name)
