@@ -47,10 +47,20 @@ if __name__ == '__main__':
     SPK_GPI = np.where(V_GPI_array > 10, 1, 0)
     SPK_TH = np.where(V_TH_array > 10, 1, 0)
 
-    Splot = 1
-    Lplot = 0
+    Splot = 0
+    Lplot = 1
     Nneuron = 10
-    lw = 0.5
+    lw = 0.3
+    if (Splot):
+        plt.scatter(0, 0, s=2, c='b', label="GPE")
+        plt.scatter(0, 0, s=2, c='r', label="STN")
+        plt.scatter(0, 0, s=2, c='g', label="GPI")
+        plt.scatter(0, 0, s=2, c='y', label="TC")
+    if (Lplot):
+        plt.plot([0, 0], [0.01, 0.01], c='lightsalmon', linewidth=lw, label="STN")
+        plt.plot([0, 0], [0.01, 0.01], c='lightskyblue', linewidth=lw, label="GPE")
+        plt.plot([0, 0], [0.01, 0.01], c='plum', linewidth=lw, label="GPI")
+        plt.plot([0, 0], [0.01, 0.01], c='lightgreen', linewidth=lw, label="TC")
     for i in range(Nneuron):
         s2_idx = np.nonzero(SPK_STN[i, :])
         idzero = [0]
@@ -111,5 +121,7 @@ if __name__ == '__main__':
     plt.yticks(fontproperties='Times New Roman', size=14)
     plt.xticks(fontproperties='Times New Roman', size=14)
     plt.title('ISI', fontdict={'family': 'SimHei', 'size': 16})
+    font1 = {'family': 'Times New Roman', 'size': 16}
+    legend = plt.legend(prop=font1)
 
 
