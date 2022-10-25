@@ -27,7 +27,7 @@ if __name__ == '__main__':
     gge_gi = 0.015
     gge_sn = 0.025
     ggi_tc = 0.202
-    t_span = 30000
+    t_span = 3000
     real_t_span = 13000
 
     stn = [0 for i in range(100)]
