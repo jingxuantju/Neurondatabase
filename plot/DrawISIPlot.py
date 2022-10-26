@@ -47,8 +47,8 @@ if __name__ == '__main__':
     SPK_GPI = np.where(V_GPI_array > 10, 1, 0)
     SPK_TH = np.where(V_TH_array > 10, 1, 0)
 
-    Splot = 0
-    Lplot = 1
+    Splot = 1
+    Lplot = 0
     Nneuron = 10
     lw = 0.3
     if (Splot):
@@ -123,5 +123,6 @@ if __name__ == '__main__':
     plt.title('ISI', fontdict={'family': 'SimHei', 'size': 16})
     font1 = {'family': 'Times New Roman', 'size': 16}
     legend = plt.legend(prop=font1)
+    plt.show()
 
 

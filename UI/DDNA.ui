@@ -20,7 +20,7 @@
       <x>20</x>
       <y>60</y>
       <width>191</width>
-      <height>591</height>
+      <height>611</height>
      </rect>
     </property>
     <property name="font">
@@ -38,7 +38,7 @@
        <x>0</x>
        <y>30</y>
        <width>181</width>
-       <height>111</height>
+       <height>141</height>
       </rect>
      </property>
      <property name="font">
@@ -137,12 +137,44 @@
        <string>ML</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="EIFButton_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>110</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>FN</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="EIFButton_3">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>110</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Purkinje</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QGroupBox" name="groupBox_4">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>140</y>
+       <y>170</y>
        <width>181</width>
        <height>111</height>
       </rect>
@@ -257,7 +289,7 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>250</y>
+       <y>280</y>
        <width>181</width>
        <height>121</height>
       </rect>
@@ -372,7 +404,7 @@
      <property name="geometry">
       <rect>
        <x>100</x>
-       <y>540</y>
+       <y>560</y>
        <width>81</width>
        <height>41</height>
       </rect>
@@ -385,7 +417,7 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>370</y>
+       <y>400</y>
        <width>181</width>
        <height>81</height>
       </rect>
@@ -459,7 +491,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>540</y>
+       <y>560</y>
        <width>81</width>
        <height>41</height>
       </rect>
@@ -472,7 +504,7 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>460</y>
+       <y>490</y>
        <width>181</width>
        <height>61</height>
       </rect>
@@ -486,7 +518,7 @@
      <property name="title">
       <string>核团层次</string>
      </property>
-     <widget class="QPushButton" name="LIFButton_3">
+     <widget class="QPushButton" name="basalButton">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -979,7 +1011,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>580</y>
+      <y>600</y>
       <width>551</width>
       <height>71</height>
      </rect>
@@ -1032,7 +1064,7 @@
       <x>220</x>
       <y>60</y>
       <width>551</width>
-      <height>521</height>
+      <height>541</height>
      </rect>
     </property>
     <property name="font">
@@ -1050,7 +1082,7 @@
        <x>10</x>
        <y>30</y>
        <width>531</width>
-       <height>481</height>
+       <height>501</height>
       </rect>
      </property>
     </widget>

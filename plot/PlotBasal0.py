@@ -61,7 +61,7 @@ if __name__ == '__main__':
         plusFile1 = 'chushihua.mat'
         data1 = scio.loadmat(plusFile1)
         Istim = data1['Istim'].tolist()[0]
-        Istim = [i * 5 for i in Istim]
+        Istim = [i * 3.5 for i in Istim]
         IstimC = [0 for i in range(100)]
         manager = Manager()
         for i in range(100):
@@ -83,26 +83,26 @@ if __name__ == '__main__':
             th[i] = IzhikevichNeuron(manager, 'th' + str(i), 0, 0.02, 0.25, -65, 0.05)
             th_syn[i] = EsynapseNeuron(manager, 'th_syn' + str(i), para_gpi_tc)
             IstimC[i] = IstimComponent(manager, 'Istim_th' + str(i), copy.deepcopy(Istim))
-            manager.link_output_input(th[i], th_syn[i])
+
             manager.link_output_input(IstimC[i], th[i], tab='I')
         for i in range(100):
             for j in range(100):
                 if (Csn_ge[i][j] == 1):
                     manager.link_output_input(stn_syn_gpe[i], gpe[j], tab='I')
                     manager.link_output_input(gpe[j], stn_syn_gpe[i], tab='houmo')
-                elif (Csn_gi[i][j] == 1):
+                if (Csn_gi[i][j] == 1):
                     manager.link_output_input(stn_syn_gpi[i], gpi[j], tab='I')
                     manager.link_output_input(gpi[j], stn_syn_gpi[i], tab='houmo')
-                elif (Cge_sn[i][j] == 1):
+                if (Cge_sn[i][j] == 1):
                     manager.link_output_input(gpe_syn_stn[i], stn[j], tab='I')
                     manager.link_output_input(stn[j], gpe_syn_stn[i], tab='houmo')
-                elif (Cge_gi[i][j] == 1):
+                if (Cge_gi[i][j] == 1):
                     manager.link_output_input(gpe_syn_gpi[i], gpi[j], tab='I')
                     manager.link_output_input(gpi[j], gpe_syn_gpi[i], tab='houmo')
-                elif (Cge_ge[i][j] == 1):
+                if (Cge_ge[i][j] == 1):
                     manager.link_output_input(gpe_syn_gpe[i], gpe[j], tab='I')
                     manager.link_output_input(gpe[j], gpe_syn_gpe[i], tab='houmo')
-                elif (Cgi_tc[i][j] == 1):
+                if (Cgi_tc[i][j] == 1):
                     manager.link_output_input(gpi_syn_tc[i], th[j], tab='I')
                     manager.link_output_input(th[j], gpi_syn_tc[i], tab='houmo')
 
