@@ -89,20 +89,22 @@ if __name__ == '__main__':
             for j in range(100):
                 if (Csn_ge[i][j] == 1):
                     manager.link_output_input(stn_syn_gpe[i], gpe[j], tab='I')
+                    # print(stn_syn_gpe[i].E)
                     manager.link_output_input(gpe[j], stn_syn_gpe[i], tab='houmo')
-                elif (Csn_gi[i][j] == 1):
+                if (Csn_gi[i][j] == 1):
                     manager.link_output_input(stn_syn_gpi[i], gpi[j], tab='I')
                     manager.link_output_input(gpi[j], stn_syn_gpi[i], tab='houmo')
-                elif (Cge_sn[i][j] == 1):
+                if (Cge_sn[i][j] == 1):
                     manager.link_output_input(gpe_syn_stn[i], stn[j], tab='I')
+                    # print(gpe_syn_stn[i].E)
                     manager.link_output_input(stn[j], gpe_syn_stn[i], tab='houmo')
-                elif (Cge_gi[i][j] == 1):
+                if (Cge_gi[i][j] == 1):
                     manager.link_output_input(gpe_syn_gpi[i], gpi[j], tab='I')
                     manager.link_output_input(gpi[j], gpe_syn_gpi[i], tab='houmo')
-                elif (Cge_ge[i][j] == 1):
+                if (Cge_ge[i][j] == 1):
                     manager.link_output_input(gpe_syn_gpe[i], gpe[j], tab='I')
                     manager.link_output_input(gpe[j], gpe_syn_gpe[i], tab='houmo')
-                elif (Cgi_tc[i][j] == 1):
+                if (Cgi_tc[i][j] == 1):
                     manager.link_output_input(gpi_syn_tc[i], th[j], tab='I')
                     manager.link_output_input(th[j], gpi_syn_tc[i], tab='houmo')
 
@@ -150,6 +152,11 @@ if __name__ == '__main__':
     SPK_GPE = np.where(V_GPE_array > 10, 1, 0)
     SPK_GPI = np.where(V_GPI_array > 10, 1, 0)
     SPK_TH = np.where(V_TH_array > 10, 1, 0)
+
+    SS_stn = np.sum(SPK_STN, axis=0)
+    SS_gpe = np.sum(SPK_GPE, axis=0)
+    SS_gpi = np.sum(SPK_GPE, axis=0)
+    SS_tc = np.sum(SPK_TH, axis=0)
 
     # Get the index of a scatter map
     indexX_STN = []

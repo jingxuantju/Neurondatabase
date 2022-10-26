@@ -27,7 +27,7 @@ if __name__ == '__main__':
     gge_gi = 0.015
     gge_sn = 0.025
     ggi_tc = 0.202
-    t_span = 3000
+    t_span = 30000
     real_t_span = 13000
 
     stn = [0 for i in range(100)]
@@ -108,25 +108,63 @@ if __name__ == '__main__':
     gpe_RESULT = []
     gpi_RESULT = []
     th_RESULT = []
+    SYN_stn_syn_gpe_r = []
+    SYN_stn_syn_gpi_r = []
+    SYN_gpe_syn_stn_r = []
+    SYN_gpe_syn_gpi_r = []
+    SYN_gpe_syn_gpe_r = []
+    SYN_gpi_syn_tc_r = []
     for j in range(100):
         stn_R = []
         gpe_R = []
         gpi_R = []
         th_R = []
+        stn_syn_gpe_r = []
+        stn_syn_gpi_r = []
+        gpe_syn_stn_r = []
+        gpe_syn_gpi_r = []
+        gpe_syn_gpe_r = []
+        gpi_syn_tc_r = []
         for dictionary in result:
             stn_R.append(dictionary['stn' + str(j)][0])
             gpe_R.append(dictionary['gpe' + str(j)][0])
             gpi_R.append(dictionary['gpi' + str(j)][0])
             th_R.append(dictionary['th' + str(j)][0])
+            stn_syn_gpe_r.append(dictionary['stn_syn_gpe' + str(j)])
+            stn_syn_gpi_r.append(dictionary['stn_syn_gpi' + str(j)])
+            gpe_syn_stn_r.append(dictionary['gpe_syn_stn' + str(j)])
+            gpe_syn_gpi_r.append(dictionary['gpe_syn_gpi' + str(j)])
+            gpe_syn_gpe_r.append(dictionary['gpe_syn_gpe' + str(j)])
+            gpi_syn_tc_r.append(dictionary['gpi_syn_tc' + str(j)])
         stn_RESULT.append(stn_R)
         gpe_RESULT.append(gpe_R)
         gpi_RESULT.append(gpi_R)
         th_RESULT.append(th_R)
+        SYN_stn_syn_gpe_r.append(stn_syn_gpe_r)
+        SYN_stn_syn_gpi_r.append(stn_syn_gpi_r)
+        SYN_gpe_syn_stn_r.append(gpe_syn_stn_r)
+        SYN_gpe_syn_gpi_r.append(gpe_syn_gpi_r)
+        SYN_gpe_syn_gpe_r.append(gpe_syn_gpe_r)
+        SYN_gpi_syn_tc_r.append(gpi_syn_tc_r)
+
     V_STN_array = np.array(stn_RESULT)
     V_GPE_array = np.array(gpe_RESULT)
     V_GPI_array = np.array(gpi_RESULT)
     V_TH_array = np.array(th_RESULT)
-    np.savez('pd0', V_STN_array=V_STN_array[:,10000:30000], V_GPE_array=V_GPE_array[:,10000:30000], V_GPI_array=V_GPI_array[:,10000:30000], V_TH_array=V_TH_array[:,10000:30000])
+
+    SYN_stn_gpe_array = np.array(SYN_stn_syn_gpe_r)
+    SYN_stn_gpi_array = np.array(SYN_stn_syn_gpi_r)
+    SYN_gpe_stn_array = np.array(SYN_gpe_syn_stn_r)
+    SYN_gpe_gpi_array = np.array(SYN_gpe_syn_gpi_r)
+    SYN_gpe_gpe_array = np.array(SYN_gpe_syn_gpe_r)
+    SYN_gpi_tc_array = np.array(SYN_gpi_syn_tc_r)
+
+    np.savez('pd0_v', V_STN_array=V_STN_array[:, 10000:30000], V_GPE_array=V_GPE_array[:, 10000:30000],
+             V_GPI_array=V_GPI_array[:, 10000:30000], V_TH_array=V_TH_array[:, 10000:30000])
+
+    np.savez('pd0_i', SYN_stn_gpe_array=SYN_stn_gpe_array[:, 10000:30000], SYN_stn_gpi_array=SYN_stn_gpi_array[:, 10000:30000],
+             SYN_gpe_stn_array=SYN_gpe_stn_array[:, 10000:30000], SYN_gpe_gpi_array=SYN_gpe_gpi_array[:, 10000:30000],
+             SYN_gpe_gpe_array=SYN_gpe_gpe_array[:, 10000:30000], SYN_gpi_tc_array=SYN_gpi_tc_array[:, 10000:30000])
 
     # SPK_STN = np.where(V_STN_array > 10, 1, 0)
     # SPK_GPE = np.where(V_GPE_array > 10, 1, 0)
