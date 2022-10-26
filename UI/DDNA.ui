@@ -38,7 +38,7 @@
        <x>0</x>
        <y>30</y>
        <width>181</width>
-       <height>121</height>
+       <height>111</height>
       </rect>
      </property>
      <property name="font">
@@ -142,9 +142,9 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>150</y>
+       <y>140</y>
        <width>181</width>
-       <height>131</height>
+       <height>111</height>
       </rect>
      </property>
      <property name="font">
@@ -257,7 +257,7 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>290</y>
+       <y>250</y>
        <width>181</width>
        <height>121</height>
       </rect>
@@ -385,9 +385,9 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>420</y>
+       <y>370</y>
        <width>181</width>
-       <height>121</height>
+       <height>81</height>
       </rect>
      </property>
      <property name="font">
@@ -467,6 +467,51 @@
      <property name="text">
       <string>清空</string>
      </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_12">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>460</y>
+       <width>181</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>.System San Francisco Display</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>核团层次</string>
+     </property>
+     <widget class="QPushButton" name="LIFButton_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BG-TH网络</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="IZButton_3">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>20</y>
+        <width>91</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>海马核团</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_6">

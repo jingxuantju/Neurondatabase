@@ -424,6 +424,11 @@ class PurkinjeNeuron(Neuron):
         self.m_ = 0
         self.n_ = 0
         self.h_ = 0
+        self.Ina = 0
+        self.Ik  = 0
+        self.Ica = 0
+        self.IM = 0
+        self.Il = 0
         self.dt = dt
 
     def function(self):
@@ -449,15 +454,16 @@ class PurkinjeNeuron(Neuron):
         self.c = self.c + self.dt *(self.alpha_c * (1 - self.c) - self.beta_c * self.c)
         self.alpha_M = 0.02 / (1 + math.exp(-(v + 20) / 5))
         self.beta_M = 0.01 * math.exp(-(v + 43) / 18)
-        self.M = self.M + self.dt * (self.alpha_M * (1 - self.M - self.beta_M * self.M))
+        self.M = self.M + self.dt * (self.alpha_M * (1 - self.M) - self.beta_M * self.M)
         self.m_ = 1 / (1 + math.exp(-(v + 34.5) / 10))
-        self.output = v + self.dt * (self.I + Isyn -
-                                    self.gna * self.h * (v - self.vna) * math.pow(self.m_, 3) -
-                                    self.gk * (v - self.vk) * math.pow(self.n, 4) -
-                                    self.gca * (v - self.vca) * math.pow(self.c, 2) -
-                                    self.gM * (v - self.vM) * self.M -
-                                    self.gl * (v - self.vl)) / self.C
+        self.Ina = self.gna * self.h * (v - self.vna) * math.pow(self.m_, 3)
+        self.Ik = self.gk * (v - self.vk) * math.pow(self.n, 4)
+        self.Ica = self.gca * (v - self.vca) * math.pow(self.c, 2)
+        self.IM = self.gM * (v - self.vM) * self.M
+        self.Il = self.gl * (v - self.vl)
+        self.output = v + self.dt * (self.I + Isyn - self.Ina - self.Ik - self.Ica
+                                     - self.IM - self.Il) / self.C
         return self.output
 
     def record(self):
-        return self.output, self.h, self.n, self.m_, self.n_,
+        return self.output, self.Ina, self.Ik, self.Ica, self.IM, self.Il
