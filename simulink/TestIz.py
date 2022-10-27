@@ -16,7 +16,8 @@ if __name__ == '__main__':
 
 
     manager = Manager()
-    comp1 = IzhikevichNeuron(manager, 'comp1', 0, 0.01, 0.26, -55, 3)
+    # comp1 = MLNeuron(manager, 'comp1', 50)
+    comp1 = FNNeuron(manager, 'comp1', -0.4)
     result = manager.start_stimulation(2000)
     COMP4_RESULT = []
     COMP5_RESULT = []
@@ -28,11 +29,11 @@ if __name__ == '__main__':
         # COMP5_RESULT.append(dictionary['comp1'][1])
         # COMP6_RESULT.append(dictionary['comp1'][2])
         # COMP7_RESULT.append(dictionary['comp1'][3])
-        COMP4_RESULT.append(dictionary['comp1'][0])
-        COMP5_RESULT.append(dictionary['comp1'][1])
+        COMP4_RESULT.append(dictionary['comp1'])
+        # COMP5_RESULT.append(dictionary['comp1'][1])
     figure = plt.figure()
-    # plt.plot(COMP4_RESULT)
-    line1, = plt.plot(COMP4_RESULT, COMP5_RESULT, color='black')
+    plt.plot(COMP4_RESULT)
+    # line1, = plt.plot(COMP4_RESULT, COMP5_RESULT, color='black')
     # line2, = plt.plot(COMP5_RESULT)
     # line3, = plt.plot(COMP6_RESULT)
     # plt.legend(handles = [line1, line2,line3 ],labels = ['m','h','n'],loc = 'upper right', fontsize=16)

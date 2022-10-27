@@ -467,3 +467,74 @@ class PurkinjeNeuron(Neuron):
 
     def record(self):
         return self.output, self.Ina, self.Ik, self.Ica, self.IM, self.Il
+
+
+class MLNeuron(Neuron):
+    def __init__(self, manager, name, I, dt=0.01):
+        super().__init__(manager, name=name)
+        self.I = I
+        self.vca = 120
+        self.vk = -80
+        self.vl = -60
+        self.gca = 4
+        self.gk = 8
+        self.gl = 2
+        self.C = 20
+        self.v1 = -1.2
+        self.v2 = 18
+        self.v3 = 12
+        self.v4 = 17.4
+        self.fai = 0.067
+        self.dt = dt
+        self.w = 0
+        self.w_ = 0
+        self.m_ = 0
+        self.tao = 0
+
+
+    def function(self):
+        v = 0
+        Isyn = 0
+        for i in range(len(self.inputs_tab)):
+            if self.inputs_tab[i] == "I":
+                Isyn += self.inputs[i]
+            else:
+                v += self.inputs[i]
+        self.inputs.clear()
+        self.m_ = 0.5 * (1 + math.tanh((v - self.v1) / self.v2))
+        self.w_ = 0.5 * (1 + math.tanh((v - self.v3) / self.v4))
+        self.tao = 1 / (math.cosh((v - self.v3) / self.v4))
+        self.w = self.w + self.dt * (self.fai * (self.w_ - self.w)) / self.tao
+        self.output = v + self.dt * (self.I + Isyn -
+                                    self.gk * self.w * (v - self.vk) -
+                                    self.gca * (v - self.vca) * self.m_ -
+                                    self.gl * (v - self.vl)) / self.C
+        return self.output
+
+
+class FNNeuron(Neuron):
+    def __init__(self, manager, name, I, dt=0.01):
+        super().__init__(manager, name=name)
+        self.I = I
+        self.a = 0.7
+        self.b = 8
+        self.r = -0.8
+        self.c = 3
+        self.dt = dt
+        self.w = 0
+
+
+    def function(self):
+        v = 0
+        Isyn = 0
+        for i in range(len(self.inputs_tab)):
+            if self.inputs_tab[i] == "I":
+                Isyn += self.inputs[i]
+            else:
+                v += self.inputs[i]
+        self.inputs.clear()
+
+        self.w = self.w + self.dt * ((self.a - self.b * v - v) / self.c)
+        self.output = v + self.dt * self.c * (self.I + Isyn + v + self.w - math.pow(v, 3)/3)
+
+        return self.output
