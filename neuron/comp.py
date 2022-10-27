@@ -181,6 +181,7 @@ class EsynapseNeuron(Component):
         self.E = E
         self.dt = 0.1
         self.ts = ts
+        self.r = 0
 
     def function(self):
         Isyn = 0
@@ -192,24 +193,23 @@ class EsynapseNeuron(Component):
             else:
                 Vpre = self.inputs[i]
         self.inputs.clear()
-        r = ((1 - r) / (1 + math.exp(-Vpre)) - r / self.ts) * self.dt + r
+        self.r = ((1 - self.r) / (1 + math.exp(-Vpre)) - self.r / self.ts) * self.dt + self.r
         for i in range(len(Vpost)):
-            Isyn += self.gs[i] * r * (self.E - Vpost[i])
+            Isyn += self.gs[i] * self.r * (self.E - Vpost[i])
         self.output = Isyn
         return self.output
 
-class EsynapseNeuron1(Component):
+class ExcsynapseNeuron(Component):
     tab = 'houmo'
-    def __init__(self, manager, name, gs, E=-80, ts=10):
+    def __init__(self, manager, name, gs, tao=0.5):
         super().__init__(manager, name=name)
         self.gs = gs
-        self.E = E
         self.dt = 0.1
-        self.ts = ts
+        self.tao = tao
+        self.Is = 0
 
     def function(self):
         Isyn = 0
-        r = 0
         Vpost = []
         for i in range(len(self.inputs_tab)):
             if self.inputs_tab[i] == synapseNeuron.tab:
@@ -217,10 +217,11 @@ class EsynapseNeuron1(Component):
             else:
                 Vpre = self.inputs[i]
         self.inputs.clear()
-        r = ((1 - r) / (1 + math.exp(-Vpre)) - r / self.ts) * self.dt + r
         for i in range(len(Vpost)):
-            Isyn += self.gs[i] * r * (self.E - Vpost[i])
-        self.output = Isyn
+            if (Vpre == 30):
+                Isyn += self.gs[i]
+            self.Is = self.Is + self.dt *(-self.Is + Isyn) / self.tao
+        self.output = self.Is
         return self.output
 
 class CsynapseNeuron(Component):
