@@ -2,6 +2,7 @@ from simulink.component import Component, Manager
 import math
 import numpy as np
 from neuron.neuron import *
+import pywt
 from pylab import *
 from neuron.layer import *
 import scipy.io as scio
@@ -97,15 +98,25 @@ plt.xlabel('时间(ms)', fontdict={'family': 'SimHei', 'size': 14})  # label = n
 plt.ylabel('ng3膜电位(mV)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 fig1.tight_layout()
 
+# Caculate LFP
+V_mean_1 = np.mean(ng1_array, axis=0)
+V_mean_2 = np.mean(ng2_array, axis=0)
+V_mean_3 = np.mean(ng3_array, axis=0)
 
-
-
-
-
-
-
-
-
-
-
-
+sampling_rate = 1024
+wavename = 'cgau8'
+totalscal = 256
+fc = pywt.central_frequency(wavename)
+cparam = 2 * fc * totalscal
+scales = cparam / np.arange(totalscal, 1, -1)
+[cwtmatr1, frequencies1] = pywt.cwt(V_mean_1, scales, wavename, 1.0 / sampling_rate)
+[cwtmatr2, frequencies2] = pywt.cwt(V_mean_2, scales, wavename, 1.0 / sampling_rate)
+[cwtmatr3, frequencies3] = pywt.cwt(V_mean_3, scales, wavename, 1.0 / sampling_rate)
+fig2 = plt.figure(figsize=(6, 8), dpi=100)
+plt.subplot(311)
+plt.contourf(range(t_span), frequencies1, abs(cwtmatr1))
+plt.subplot(312)
+plt.contourf(range(t_span), frequencies2, abs(cwtmatr2))
+plt.subplot(313)
+plt.contourf(range(t_span), frequencies3, abs(cwtmatr3))
+fig2.tight_layout()
