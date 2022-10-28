@@ -523,3 +523,16 @@ class IstimComponent(Component):
         a = self.list.pop()
         self.output = a
         return self.output
+
+class IstimComponentNdarray(Component):
+    def __init__(self, manager, name, list, I=0):
+        super().__init__(manager, name=name)
+        self.I = I
+        self.list = list
+
+    def function(self):
+        self.inputs.clear()
+
+        a = self.list.tolist.pop()
+        self.output = a
+        return self.output

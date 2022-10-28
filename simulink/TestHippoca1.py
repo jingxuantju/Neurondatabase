@@ -7,15 +7,28 @@ from neuron.layer import *
 import scipy.io as scio
 import copy
 import cv2
-from scipy import misc
-import imageio
 import matplotlib.gridspec as gridspec
+from scipy import misc
+# import imageio
+
 
 
 if __name__ == '__main__':
     dt = 0.1
-    t_span = 3000
-    real_t_span = 300
+    t_span = 9000
+    real_t_span = 900
+    taot_sn_ge = 2 / dt
+    taot_ge_ge = 6 / dt
+    taot_ge_gi = 6 / dt
+    taot_sn_gi = 2 / dt
+    taot_ge_sn = 6 / dt
+    taot_gi_tc = 6 / dt
+    gsn_ge = 0.075
+    gsn_gi = 0.075
+    gge_ge = 0.025
+    gge_gi = 0.015
+    gge_sn = 0.025
+    ggi_tc = 0.202
 
 
     num = 100
@@ -23,40 +36,43 @@ if __name__ == '__main__':
     ng1_syn_ng1 = [0 for i in range(num)]
     ng1_syn_ng2 = [0 for i in range(num)]
     ng1_syn_ng3 = [0 for i in range(num)]
-    ng2 = [0 for i in range(num)]
-    ng2_syn_ng2 = [0 for i in range(num)]
-    ng2_syn_ng3 = [0 for i in range(num)]
-    ng2_syn_ng1 = [0 for i in range(num)]
-    ng3 = [0 for i in range(num)]
-    ng3_syn_ng3 = [0 for i in range(num)]
-    ng3_syn_ng1 = [0 for i in range(num)]
-    ng3_syn_ng2 = [0 for i in range(num)]
     para_exc_exc = [random.uniform(0,0.65) for i in range(num)]
     para_exc_inh = [random.uniform(0,2) for i in range(num)]
     para_inh_exc = [random.uniform(-1.7,-0.8) for i in range(num)]
     para_inh_inh = [random.uniform(-1.1,-0.3) for i in range(num)]
 
+    ng2 = [0 for i in range(num)]
+    ng2_syn_ng2 = [gge_sn for i in range(num)]
+    ng2_syn_ng3 = [gge_sn for i in range(num)]
+    ng2_syn_ng1 = [gge_sn for i in range(num)]
+    ng3 = [0 for i in range(num)]
+    ng3_syn_ng3 = [gge_sn for i in range(num)]
+    ng3_syn_ng1 = [gge_sn for i in range(num)]
+    ng3_syn_ng2 = [gge_sn for i in range(num)]
+    para_gpi_tc = [ggi_tc for i in range(num)]
+
+
 
     manager = Manager()
     for i in range(num):
-        ng1[i] = IzhikevichNeuron1(manager, 'ng1' + str(i), 10, 0.02, 0.24, -65, 10)
-        ng1_syn_ng1[i] = ExcsynapseNeuron(manager, 'ng1_syn_ng1' + str(i), para_exc_exc)
-        ng1_syn_ng2[i] = ExcsynapseNeuron(manager, 'ng1_syn_ng2' + str(i), para_exc_exc)
-        ng1_syn_ng3[i] = ExcsynapseNeuron(manager, 'ng1_syn_ng3' + str(i), para_exc_inh)
+        ng1[i] = IzhikevichNeuron(manager, 'ng1' + str(i), 10, 0.02, 0.24, -65, 10)
+        ng1_syn_ng1[i] = EsynapseNeuron(manager, 'ng1_syn_ng1' + str(i), para_exc_exc, E=0)
+        ng1_syn_ng2[i] = EsynapseNeuron(manager, 'ng1_syn_ng2' + str(i), para_exc_exc, E=0)
+        ng1_syn_ng3[i] = EsynapseNeuron(manager, 'ng1_syn_ng3' + str(i), para_exc_inh, E=0)
         manager.link_output_input(ng1[i], ng1_syn_ng1[i])
         manager.link_output_input(ng1[i], ng1_syn_ng2[i])
         manager.link_output_input(ng1[i], ng1_syn_ng3[i])
-        ng2[i] = IzhikevichNeuron1(manager, 'ng2' + str(i), 10, 0.02, 0.24, -65, 10)
-        ng2_syn_ng2[i] = ExcsynapseNeuron(manager, 'ng2_syn_ng2' + str(i), para_exc_exc)
-        ng2_syn_ng3[i] = ExcsynapseNeuron(manager, 'ng2_syn_ng3' + str(i), para_exc_inh)
-        ng2_syn_ng1[i] = ExcsynapseNeuron(manager, 'ng2_syn_ng1' + str(i), para_exc_exc)
+        ng2[i] = IzhikevichNeuron(manager, 'ng2' + str(i), 10, 0.02, 0.24, -65, 10)
+        ng2_syn_ng2[i] = EsynapseNeuron(manager, 'ng2_syn_ng2' + str(i), para_exc_exc, E=0)
+        ng2_syn_ng3[i] = EsynapseNeuron(manager, 'ng2_syn_ng3' + str(i), para_exc_inh, E=0)
+        ng2_syn_ng1[i] = EsynapseNeuron(manager, 'ng2_syn_ng1' + str(i), para_exc_exc, E=0)
         manager.link_output_input(ng2[i], ng2_syn_ng2[i])
         manager.link_output_input(ng2[i], ng2_syn_ng3[i])
         manager.link_output_input(ng2[i], ng2_syn_ng1[i])
-        ng3[i] = IzhikevichNeuron1(manager, 'ng3' + str(i), 1, 0.01, 0.25, -65, 1)
-        ng3_syn_ng3[i] = ExcsynapseNeuron(manager, 'ng3_syn_ng3' + str(i), para_inh_inh, tao=1)
-        ng3_syn_ng1[i] = ExcsynapseNeuron(manager, 'ng3_syn_ng1' + str(i), para_inh_exc, tao=1)
-        ng3_syn_ng2[i] = ExcsynapseNeuron(manager, 'ng3_syn_ng2' + str(i), para_inh_exc, tao=1)
+        ng3[i] = IzhikevichNeuron(manager, 'ng3' + str(i), 2, 0.01, 0.25, -65, 1)
+        ng3_syn_ng3[i] = EsynapseNeuron(manager, 'ng3_syn_ng3' + str(i), para_inh_inh)
+        ng3_syn_ng1[i] = EsynapseNeuron(manager, 'ng3_syn_ng1' + str(i), para_inh_exc)
+        ng3_syn_ng2[i] = EsynapseNeuron(manager, 'ng3_syn_ng2' + str(i), para_inh_exc)
         manager.link_output_input(ng3[i], ng3_syn_ng3[i])
         manager.link_output_input(ng3[i], ng3_syn_ng1[i])
         manager.link_output_input(ng3[i], ng3_syn_ng2[i])
@@ -119,11 +135,8 @@ if __name__ == '__main__':
     ng2_array = np.array(ng2_RESULT)
     ng3_array = np.array(ng3_RESULT)
 
-    # np.savez('ng_v', ng1_array=ng1_array[:, 1000:t_span], ng2_array=ng2_array[:, 1000:t_span],
-    #          ng3_array=ng3_array[:, 1000:t_span])
-
-    np.savez('ng_v', ng1_array=ng1_array[:, 1000:t_span], ng2_array=ng2_array[:, 1000:t_span],
-             ng3_array=ng3_array[:, 1000:t_span])
+    np.savez('ng_v', ng1_array=ng1_array[:, 1000:9000], ng2_array=ng2_array[:, 1000:9000],
+             ng3_array=ng3_array[:, 1000:9000])
 
     SPK_ng1 = np.where(ng1_array > 10, 1, 0)
     SPK_ng2 = np.where(ng2_array > 10, 1, 0)

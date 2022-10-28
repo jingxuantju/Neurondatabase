@@ -203,6 +203,12 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+            background-color:#FFFFFF;          
+			border-style: solid;
+        }</string>
+   </property>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
