@@ -28,7 +28,8 @@ class Manager:
         :return:
         """
         for step in range(stimulation_step):
-            # print(step)
+            if(step%1000==0):
+                print(step)
             # record history
             result_dictonary = {}
             for component in self.living_dictionary:
