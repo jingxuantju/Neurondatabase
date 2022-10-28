@@ -18,7 +18,7 @@ if __name__ == '__main__':
     FiringRate_FS = []
     for I_in in range(100):
         manager = Manager()
-        comp2 = IzhikevichNeuron(manager, 'comp2', I_in/4, 0.1, 0.2, -65, 2)
+        comp2 = IzhikevichNeuron(manager, 'comp2', I_in / 4, 0.1, 0.2, -65, 2)
         result = manager.start_stimulation(3000)
         COMP2_RESULT = []
         for dictionary in result:
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     FiringRate_CH = []
     for I_in in range(100):
         manager = Manager()
-        comp3 = IzhikevichNeuron(manager, 'comp3', I_in/4, 0.02, 0.2, -50, 2)
+        comp3 = IzhikevichNeuron(manager, 'comp3', I_in / 4, 0.02, 0.2, -50, 2)
         result = manager.start_stimulation(3000)
         COMP3_RESULT = []
         for dictionary in result:
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     FiringRate_RS = []
     for I_in in range(100):
         manager = Manager()
-        comp4 = IzhikevichNeuron(manager, 'comp4', I_in/4, 0.02, 0.2, -65, 8)
+        comp4 = IzhikevichNeuron(manager, 'comp4', I_in / 4, 0.02, 0.2, -65, 8)
         result = manager.start_stimulation(3000)
         COMP4_RESULT = []
         for dictionary in result:
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     FiringRate_IB = []
     for I_in in range(100):
         manager = Manager()
-        comp5 = IzhikevichNeuron(manager, 'comp5', I_in/4, 0.02, 0.2, -55, 4)
+        comp5 = IzhikevichNeuron(manager, 'comp5', I_in / 4, 0.02, 0.2, -55, 4)
         result = manager.start_stimulation(3000)
         COMP5_RESULT = []
         for dictionary in result:

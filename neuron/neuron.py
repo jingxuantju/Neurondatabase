@@ -65,6 +65,43 @@ class IzhikevichNeuron(Neuron):
     def record(self):
         return self.output, self.u
 
+class IzhikevichNeuron1(Neuron):
+    def __init__(self, manager: Manager, name, I, a, b, c, d, dt=0.1):
+        super().__init__(manager, name=name)
+        self.output = random.randint(-75,-30)
+        self.u = random.randint(-10,0)
+        self.I = I
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+        self.dt = dt
+        self.spike = 0
+
+    def function(self):
+        v = 0
+        Isyn = 0
+        for i in range(len(self.inputs_tab)):
+            if self.inputs_tab[i] == "I":
+                Isyn += self.inputs[i]
+            elif self.inputs_tab[i] == "self":
+                v += self.inputs[i]
+        self.inputs.clear()
+
+        output = min(v + 0.1 * (0.04 * v * v + 5 * v + 140 - self.u + self.I + Isyn), 30)
+        self.u = self.u + self.dt * (self.a * (self.b * v - self.u))
+        if v == 30:
+            output = self.c
+            self.u = self.u + self.d
+            self.spike = 1
+        else:
+            self.spike = 0
+        self.output = output
+        return self.output
+
+    def record(self):
+        return self.output, self.u, self.spike
+
 
 class simplePRNeuron(Neuron):
     def __init__(self, manager, name, Is):

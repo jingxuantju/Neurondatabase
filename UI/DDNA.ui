@@ -6,26 +6,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1104</width>
-    <height>767</height>
+    <width>1041</width>
+    <height>737</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QGroupBox {
+            background-color:#e2ebf0;          
+			border-style: solid;
+        }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>60</y>
-      <width>191</width>
-      <height>611</height>
+      <y>50</y>
+      <width>211</width>
+      <height>641</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>.System San Francisco Display</family>
+      <family>黑体</family>
       <pointsize>14</pointsize>
      </font>
     </property>
@@ -37,15 +43,18 @@
       <rect>
        <x>0</x>
        <y>30</y>
-       <width>181</width>
+       <width>191</width>
        <height>141</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>.System San Francisco Display</family>
+       <family>黑体</family>
        <pointsize>11</pointsize>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="title">
       <string>神经元层次</string>
@@ -59,6 +68,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#b7afd9;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>LIF</string>
       </property>
@@ -66,14 +87,26 @@
      <widget class="QPushButton" name="IZButton">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>20</y>
         <width>91</width>
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#b7afd9;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
-       <string>Iz</string>
+       <string>Izhikevich</string>
       </property>
      </widget>
      <widget class="QPushButton" name="PRButton">
@@ -82,11 +115,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>50</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#b7afd9;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>PR</string>
@@ -101,6 +146,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#b7afd9;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>HH</string>
       </property>
@@ -111,11 +168,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>80</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#b7afd9;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>AIF</string>
@@ -133,6 +202,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#b7afd9;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>ML</string>
       </property>
@@ -149,6 +230,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#b7afd9;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>FN</string>
       </property>
@@ -159,11 +252,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>110</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#b7afd9;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>Purkinje</string>
@@ -175,13 +280,13 @@
       <rect>
        <x>0</x>
        <y>170</y>
-       <width>181</width>
+       <width>191</width>
        <height>111</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>.System San Francisco Display</family>
+       <family>黑体</family>
        <pointsize>11</pointsize>
       </font>
      </property>
@@ -200,6 +305,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#e7d4dc;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>胞体</string>
       </property>
@@ -210,11 +327,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>20</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#e7d4dc;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>树突</string>
@@ -226,11 +355,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>50</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#e7d4dc;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>K+通道</string>
@@ -248,6 +389,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#e7d4dc;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>Na+通道</string>
       </property>
@@ -258,11 +411,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>80</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#e7d4dc;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>Cl-通道</string>
@@ -280,6 +445,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#e7d4dc;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>Ca+通道</string>
       </property>
@@ -290,13 +467,13 @@
       <rect>
        <x>0</x>
        <y>280</y>
-       <width>181</width>
+       <width>191</width>
        <height>121</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>.System San Francisco Display</family>
+       <family>黑体</family>
        <pointsize>11</pointsize>
       </font>
      </property>
@@ -315,6 +492,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#AFD3D9;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>加法器</string>
       </property>
@@ -325,11 +514,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>20</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#AFD3D9;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>乘法器</string>
@@ -341,11 +542,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>50</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#AFD3D9;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>LUT</string>
@@ -363,6 +576,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#AFD3D9;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>选择器</string>
       </property>
@@ -373,11 +598,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>80</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#AFD3D9;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>EXP</string>
@@ -395,6 +632,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#AFD3D9;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>保持器</string>
       </property>
@@ -404,10 +653,22 @@
      <property name="geometry">
       <rect>
        <x>100</x>
-       <y>560</y>
+       <y>590</y>
        <width>81</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            background-color:#fddb92;          
+			border-style: solid;
+        }</string>
      </property>
      <property name="text">
       <string>运行</string>
@@ -418,13 +679,13 @@
       <rect>
        <x>0</x>
        <y>400</y>
-       <width>181</width>
+       <width>191</width>
        <height>81</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>.System San Francisco Display</family>
+       <family>黑体</family>
        <pointsize>11</pointsize>
       </font>
      </property>
@@ -440,6 +701,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#f1f0bb;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>锥体细胞</string>
       </property>
@@ -447,11 +720,23 @@
      <widget class="QPushButton" name="IZButton_2">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>20</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#f1f0bb;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>颗粒细胞</string>
@@ -463,11 +748,23 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>50</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#f1f0bb;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>浦肯野细胞</string>
@@ -482,6 +779,18 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#f1f0bb;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
        <string>胶质细胞</string>
       </property>
@@ -491,10 +800,22 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>560</y>
+       <y>590</y>
        <width>81</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            background-color:#c2ced0;          
+			border-style: solid;
+        }</string>
      </property>
      <property name="text">
       <string>清空</string>
@@ -505,13 +826,13 @@
       <rect>
        <x>0</x>
        <y>490</y>
-       <width>181</width>
+       <width>191</width>
        <height>61</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>.System San Francisco Display</family>
+       <family>黑体</family>
        <pointsize>11</pointsize>
       </font>
      </property>
@@ -527,37 +848,111 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#afbbd9;          
+			border-style: solid;
+        }</string>
+      </property>
       <property name="text">
-       <string>BG-TH网络</string>
+       <string>基底核核团</string>
       </property>
      </widget>
      <widget class="QPushButton" name="IZButton_3">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>100</x>
         <y>20</y>
         <width>91</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            background-color:#afbbd9;          
+			border-style: solid;
+        }</string>
       </property>
       <property name="text">
        <string>海马核团</string>
       </property>
      </widget>
     </widget>
+    <widget class="QPushButton" name="IZButton_4">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>540</y>
+       <width>91</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            background-color:#afbbd9;          
+			border-style: solid;
+        }</string>
+     </property>
+     <property name="text">
+      <string>小世界网络</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="basalButton_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>540</y>
+       <width>91</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            background-color:#afbbd9;          
+			border-style: solid;
+        }</string>
+     </property>
+     <property name="text">
+      <string>前馈网络</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_6">
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>60</y>
+      <y>50</y>
       <width>261</width>
-      <height>611</height>
+      <height>641</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>.System San Francisco Display</family>
+      <family>黑体</family>
       <pointsize>14</pointsize>
      </font>
     </property>
@@ -573,6 +968,12 @@
        <height>181</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>对象查看器</string>
      </property>
@@ -587,8 +988,8 @@
       </property>
       <property name="font">
        <font>
-        <family>.System San Francisco Display</family>
-        <pointsize>12</pointsize>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <column>
@@ -612,6 +1013,12 @@
        <height>261</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>属性编辑器</string>
      </property>
@@ -623,6 +1030,15 @@
         <width>231</width>
         <height>221</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
       <property name="currentIndex">
        <number>2</number>
@@ -743,6 +1159,12 @@
           <height>31</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -758,8 +1180,8 @@
         </property>
         <property name="font">
          <font>
-          <family>.System San Francisco Display</family>
-          <pointsize>12</pointsize>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -777,8 +1199,8 @@
         </property>
         <property name="font">
          <font>
-          <family>.System San Francisco Display</family>
-          <pointsize>12</pointsize>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -794,6 +1216,12 @@
           <height>31</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -806,6 +1234,12 @@
           <width>111</width>
           <height>31</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>b</string>
@@ -820,6 +1254,12 @@
           <height>31</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -832,6 +1272,12 @@
           <width>111</width>
           <height>31</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+         </font>
         </property>
         <property name="text">
          <string/>
@@ -848,8 +1294,8 @@
         </property>
         <property name="font">
          <font>
-          <family>.System San Francisco Display</family>
-          <pointsize>12</pointsize>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -867,8 +1313,8 @@
         </property>
         <property name="font">
          <font>
-          <family>.System San Francisco Display</family>
-          <pointsize>12</pointsize>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -884,6 +1330,12 @@
           <height>31</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -896,6 +1348,12 @@
           <width>111</width>
           <height>31</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+         </font>
         </property>
         <property name="text">
          <string/>
@@ -912,8 +1370,8 @@
         </property>
         <property name="font">
          <font>
-          <family>.System San Francisco Display</family>
-          <pointsize>12</pointsize>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -928,6 +1386,12 @@
           <width>111</width>
           <height>31</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>11</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>Izhevich</string>
@@ -945,6 +1409,12 @@
        <height>141</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>连接关系编辑器</string>
      </property>
@@ -959,12 +1429,12 @@
       </property>
       <property name="font">
        <font>
-        <family>.System San Francisco Display</family>
-        <pointsize>12</pointsize>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>b</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_14">
@@ -978,8 +1448,8 @@
       </property>
       <property name="font">
        <font>
-        <family>.System San Francisco Display</family>
-        <pointsize>12</pointsize>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="text">
@@ -997,12 +1467,12 @@
       </property>
       <property name="font">
        <font>
-        <family>.System San Francisco Display</family>
-        <pointsize>12</pointsize>
+        <family>黑体</family>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>a</string>
+       <string/>
       </property>
      </widget>
     </widget>
@@ -1011,15 +1481,15 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>600</y>
-      <width>551</width>
-      <height>71</height>
+      <y>590</y>
+      <width>561</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>.System San Francisco Display</family>
-      <pointsize>14</pointsize>
+      <family>黑体</family>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="title">
@@ -1034,42 +1504,29 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
      <property name="placeholderText">
       <string>D:\FPGA\ku\dataset</string>
      </property>
     </widget>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>10</y>
-      <width>231</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>.System San Francisco Display</family>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>神经元模型智能库</string>
-    </property>
-   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>60</y>
-      <width>551</width>
+      <y>50</y>
+      <width>561</width>
       <height>541</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>.System San Francisco Display</family>
+      <family>黑体</family>
       <pointsize>14</pointsize>
      </font>
     </property>
@@ -1079,13 +1536,64 @@
     <widget class="QGraphicsView" name="graphicsView">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>20</x>
        <y>30</y>
        <width>531</width>
        <height>501</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
     </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_13">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>1021</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>黑体</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>神经元模型智能库</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_14">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>21</width>
+      <height>691</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1093,7 +1601,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1104</width>
+     <width>1041</width>
      <height>26</height>
     </rect>
    </property>

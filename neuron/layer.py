@@ -7,7 +7,7 @@ from neuron.comp import *
 
 class Layer(Neuron):
 
-    def __init__(self, manager, name, number=10,type=IzhikevichNeuron, key=(10, 0.02, 0.2, -65, 2)):
+    def __init__(self, manager, name, number=10, type=IzhikevichNeuron, key=(10, 0.02, 0.2, -65, 2)):
         """
 
         :param manager:

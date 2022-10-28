@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+            background-color:#e2ebf0;          
+			border-style: solid;
+        }</string>
+  </property>
   <widget class="QLineEdit" name="aEdit">
    <property name="geometry">
     <rect>
@@ -21,6 +27,12 @@
      <width>201</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+            background-color:#FFFFFF;          
+			border-style: solid;
+        }</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="bEdit">
@@ -31,6 +43,12 @@
      <width>201</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+            background-color:#FFFFFF;          
+			border-style: solid;
+        }</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -44,7 +62,7 @@
    </property>
    <property name="font">
     <font>
-     <family>.System San Francisco Display</family>
+     <family>黑体</family>
      <pointsize>14</pointsize>
     </font>
    </property>
@@ -63,7 +81,7 @@
    </property>
    <property name="font">
     <font>
-     <family>.System San Francisco Display</family>
+     <family>黑体</family>
      <pointsize>14</pointsize>
     </font>
    </property>
@@ -82,7 +100,7 @@
    </property>
    <property name="font">
     <font>
-     <family>.System San Francisco Display</family>
+     <family>黑体</family>
      <pointsize>14</pointsize>
     </font>
    </property>
@@ -99,6 +117,12 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+            background-color:#FFFFFF;          
+			border-style: solid;
+        }</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="dEdit">
    <property name="geometry">
@@ -108,6 +132,12 @@
      <width>201</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+            background-color:#FFFFFF;          
+			border-style: solid;
+        }</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -121,7 +151,7 @@
    </property>
    <property name="font">
     <font>
-     <family>.System San Francisco Display</family>
+     <family>黑体</family>
      <pointsize>14</pointsize>
     </font>
    </property>
@@ -138,6 +168,12 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+            background-color:#FFFFFF;          
+			border-style: solid;
+        }</string>
+   </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
@@ -150,7 +186,7 @@
    </property>
    <property name="font">
     <font>
-     <family>.System San Francisco Display</family>
+     <family>黑体</family>
      <pointsize>14</pointsize>
     </font>
    </property>
@@ -167,6 +203,12 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+            background-color:#FFFFFF;          
+			border-style: solid;
+        }</string>
+   </property>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
@@ -179,7 +221,7 @@
    </property>
    <property name="font">
     <font>
-     <family>.System San Francisco Display</family>
+     <family>黑体</family>
      <pointsize>14</pointsize>
     </font>
    </property>
@@ -190,7 +232,7 @@
   <widget class="QPushButton" name="ackButton">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>260</x>
      <y>250</y>
      <width>93</width>
      <height>28</height>
@@ -201,6 +243,12 @@
      <family>.System San Francisco Display</family>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+            background-color:#fddb92;          
+			border-style: solid;
+        }</string>
    </property>
    <property name="text">
     <string>确认</string>
