@@ -75,8 +75,10 @@ def square_wave(start, end, zhouqi, midu):
 
 
 if __name__ == '__main__':
-    t_span = 30000
+    t_span = 14000
+    # t_span = 30000
     session_t_span = 10000
+    zero_t_span = 2000
     real_t_span = 3000
     num = 100
     Add_noise = 1
@@ -99,8 +101,8 @@ if __name__ == '__main__':
     # Gen Direct-Current
     Amp1 = 6
     Amp2 = -6
-    dc_0_t = np.ones((1, session_t_span)) * 0
-    dc_0 = dc_0_t.reshape(session_t_span)
+    dc_0_t = np.ones((1, zero_t_span)) * 0
+    dc_0 = dc_0_t.reshape(zero_t_span)
     dc_1 = np.ones((1, session_t_span)) * Amp1
     dc_2 = np.ones((1, session_t_span)) * Amp2
 
@@ -113,7 +115,8 @@ if __name__ == '__main__':
     input3 = np.hstack([isine1, dc_0])
     input4 = np.hstack([isine2, dc_0])
 
-    np.savez('ng_input', input1=input1, input2=input2, input3=input3, input4=input4, input1n=input1 + noise, input2n=input2 + noise, input3n=input3 + noise, input4n=input4 + noise)
+    # np.savez('ng_input', input1=input1, input2=input2, input3=input3, input4=input4, input1n=input1 + noise, input2n=input2 + noise, input3n=input3 + noise, input4n=input4 + noise)
+    np.savez('ng_input', input1=input1, input2=input2, input3=input3, input4=input4, input1n=(input1 + noise)*100, input2n=(input2 + noise)*100, input3n=(input3 + noise)*100, input4n=(input4 + noise)*100)
 
     if(Add_noise==0):
         np.savez('ng_input', input1=input1, input2=input2, input3=input3, input4=input4)
@@ -163,3 +166,36 @@ if __name__ == '__main__':
         plt.yticks(fontproperties='Times New Roman', size=14)
         plt.xticks(fontproperties='Times New Roman', size=14)
         plt.ylabel('ng1', fontdict={'family': 'SimHei', 'size': 14})
+
+        fig2 = plt.figure(figsize=(10, 5), dpi=100)
+        wavename = 'cgau8'
+        sampling_rate = 1024
+        totalscal = 49
+        fc = pywt.central_frequency(wavename)
+        cparam = 2 * fc * totalscal
+        scales = cparam / np.arange(totalscal, 1, -1)
+        [cwtmatr1, frequencies1] = pywt.cwt(input1, scales, wavename, 1.0 / sampling_rate)
+        [cwtmatr2, frequencies2] = pywt.cwt(input2, scales, wavename, 1.0 / sampling_rate)
+        [cwtmatr3, frequencies3] = pywt.cwt(input3, scales, wavename, 1.0 / sampling_rate)
+        [cwtmatr4, frequencies4] = pywt.cwt(input4, scales, wavename, 1.0 / sampling_rate)
+        # [cwtmatr1, frequencies1] = pywt.cwt(input1 + noise, scales, wavename, 1.0 / sampling_rate)
+        # [cwtmatr2, frequencies2] = pywt.cwt(input2 + noise, scales, wavename, 1.0 / sampling_rate)
+        # [cwtmatr3, frequencies3] = pywt.cwt(input3 + noise, scales, wavename, 1.0 / sampling_rate)
+        # [cwtmatr4, frequencies4] = pywt.cwt(input4 + noise, scales, wavename, 1.0 / sampling_rate)
+        plt.subplot(411)
+        plt.contourf(range(t_span), frequencies1, abs(cwtmatr1))
+        plt.ylabel(u"prinv(Hz)")
+        plt.xlabel(u"t(s)")
+        plt.subplot(412)
+        plt.contourf(range(t_span), frequencies2, abs(cwtmatr2))
+        plt.ylabel(u"prinv(Hz)")
+        plt.xlabel(u"t(s)")
+        plt.subplot(413)
+        plt.contourf(range(t_span), frequencies3, abs(cwtmatr3))
+        plt.ylabel(u"prinv(Hz)")
+        plt.xlabel(u"t(s)")
+        plt.subplot(414)
+        plt.contourf(range(t_span), frequencies4, abs(cwtmatr4))
+        plt.ylabel(u"prinv(Hz)")
+        plt.xlabel(u"t(s)")
+        plt.subplots_adjust(hspace=0.4)

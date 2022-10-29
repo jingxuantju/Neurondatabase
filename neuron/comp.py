@@ -224,6 +224,31 @@ class ExcsynapseNeuron(Component):
         self.output = self.Is
         return self.output
 
+class InhsynapseNeuron(Component):
+    tab = 'houmo'
+    def __init__(self, manager, name, gs, tao=6):
+        super().__init__(manager, name=name)
+        self.gs = gs
+        self.dt = 0.1
+        self.tao = tao
+        self.Is = 0
+
+    def function(self):
+        Isyn = 0
+        Vpost = []
+        for i in range(len(self.inputs_tab)):
+            if self.inputs_tab[i] == synapseNeuron.tab:
+                Vpost.append(self.inputs[i])
+            else:
+                Vpre = self.inputs[i]
+        self.inputs.clear()
+        for i in range(len(Vpost)):
+            if (Vpre == 30):
+                Isyn += self.gs[i]
+            self.Is = self.Is + self.dt *(-self.Is + Isyn) / self.tao
+        self.output = -self.Is
+        return self.output
+
 class CsynapseNeuron(Component):
     tab = 'houmo'
     def __init__(self, manager, name, gs):

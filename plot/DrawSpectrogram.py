@@ -20,9 +20,9 @@ from neuron.neuron import *
 
 
 if __name__ == '__main__':
-    t_span = 30000
-    session_t_span = 10000
-    real_t_span = 3000
+    # t_span = 30000
+    t_span = 14000
+
     num = 100
 
     n0 = np.load('ng_input.npz')
@@ -75,21 +75,21 @@ if __name__ == '__main__':
         manager.link_output_input(ng2[i], ng2_syn_ng3[i])
         manager.link_output_input(ng2[i], ng2_syn_ng1[i])
         ng3[i] = IzhikevichNeuron1(manager, 'ng3' + str(i), 0, 0.01, 0.25, -65, 1)
-        ng3_syn_ng3[i] = ExcsynapseNeuron(manager, 'ng3_syn_ng3' + str(i), para_inh_inh, tao=1)
-        ng3_syn_ng1[i] = ExcsynapseNeuron(manager, 'ng3_syn_ng1' + str(i), para_inh_exc, tao=1)
-        ng3_syn_ng2[i] = ExcsynapseNeuron(manager, 'ng3_syn_ng2' + str(i), para_inh_exc, tao=1)
+        ng3_syn_ng3[i] = ExcsynapseNeuron(manager, 'ng3_syn_ng3' + str(i), para_inh_inh, tao=6)
+        ng3_syn_ng1[i] = ExcsynapseNeuron(manager, 'ng3_syn_ng1' + str(i), para_inh_exc, tao=6)
+        ng3_syn_ng2[i] = ExcsynapseNeuron(manager, 'ng3_syn_ng2' + str(i), para_inh_exc, tao=6)
         manager.link_output_input(ng3[i], ng3_syn_ng3[i])
         manager.link_output_input(ng3[i], ng3_syn_ng1[i])
         manager.link_output_input(ng3[i], ng3_syn_ng2[i])
-        IstimC1[i] = IstimComponent(manager, 'Istim' + str(i), copy.deepcopy(input3n))
+        IstimC1[i] = IstimComponent(manager, 'Istim1' + str(i), copy.deepcopy(input3n))
         manager.link_output_input(IstimC1[i], ng1[i], tab='I')
-        IstimC2[i] = IstimComponent(manager, 'Istim' + str(i), copy.deepcopy(input3n))
+        IstimC2[i] = IstimComponent(manager, 'Istim2' + str(i), copy.deepcopy(input3n))
         manager.link_output_input(IstimC2[i], ng2[i], tab='I')
     for i in range(num):
         for j in range(num):
-            a1 = random.randint(0, 10)
-            a2 = random.randint(0, 10)
-            a3 = random.randint(0, 10)
+            a1 = random.randint(0, 9)
+            a2 = random.randint(0, 9)
+            a3 = random.randint(0, 9)
             if (a1 < 4):
                 manager.link_output_input(ng1_syn_ng1[i], ng1[j], tab='I')
                 manager.link_output_input(ng1[j], ng1_syn_ng1[i], tab='houmo')
@@ -99,9 +99,9 @@ if __name__ == '__main__':
             if (a3 < 4):
                 manager.link_output_input(ng1_syn_ng3[i], ng3[j], tab='I')
                 manager.link_output_input(ng3[j], ng1_syn_ng3[i], tab='houmo')
-            b1 = random.randint(0, 10)
-            b2 = random.randint(0, 10)
-            b3 = random.randint(0, 10)
+            b1 = random.randint(0, 9)
+            b2 = random.randint(0, 9)
+            b3 = random.randint(0, 9)
             if (b1 < 4):
                 manager.link_output_input(ng2_syn_ng2[i], ng2[j], tab='I')
                 manager.link_output_input(ng2[j], ng2_syn_ng2[i], tab='houmo')
@@ -111,9 +111,9 @@ if __name__ == '__main__':
             if (b3 < 4):
                 manager.link_output_input(ng2_syn_ng1[i], ng1[j], tab='I')
                 manager.link_output_input(ng1[j], ng2_syn_ng1[i], tab='houmo')
-            c1 = random.randint(0, 10)
-            c2 = random.randint(0, 10)
-            c3 = random.randint(0, 10)
+            c1 = random.randint(0, 9)
+            c2 = random.randint(0, 9)
+            c3 = random.randint(0, 9)
             if (c1 < 4):
                 manager.link_output_input(ng3_syn_ng3[i], ng3[j], tab='I')
                 manager.link_output_input(ng3[j], ng3_syn_ng3[i], tab='houmo')
@@ -125,6 +125,8 @@ if __name__ == '__main__':
                 manager.link_output_input(ng2[j], ng3_syn_ng2[i], tab='houmo')
 
     result = manager.start_stimulation(t_span)
+
+    np.savez('manager1', manager)
 
     ng1_RESULT = []
     ng2_RESULT = []
@@ -145,8 +147,7 @@ if __name__ == '__main__':
     ng2_array = np.array(ng2_RESULT)
     ng3_array = np.array(ng3_RESULT)
 
-    # np.savez('ng_vs', ng1_array=ng1_array[:, 1000:9000], ng2_array=ng2_array[:, 1000:9000],
-    #          ng3_array=ng3_array[:, 1000:9000])
+    np.savez('ng_vs', ng1_array=ng1_array, ng2_array=ng2_array, ng3_array=ng3_array)
 
     # Caculate LFP
     V_mean_1 = np.mean(ng1_array, axis=0)
@@ -195,4 +196,4 @@ if __name__ == '__main__':
     # plt.subplot(413)
     # plt.contourf(range(t_span), frequencies1, abs(cwtmatr2))
     plt.subplot(313)
-    plt.contourf(range(t_span), frequencies1, abs(cwtmatr3))
+    plt.contourf(range(t_span), frequencies3, abs(cwtmatr3))

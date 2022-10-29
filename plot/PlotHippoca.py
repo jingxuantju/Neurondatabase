@@ -12,10 +12,10 @@ import matplotlib.gridspec as gridspec
 from scipy import misc
 # import imageio
 
-t_span = 8000
-real_t_span = 800
+t_span = 12000
+real_t_span = 1400
 
-n0 = np.load('ng_v.npz')
+n0 = np.load('ng_vs.npz')
 ng1_array = n0['ng1_array']
 ng2_array = n0['ng2_array']
 ng3_array = n0['ng3_array']
@@ -55,22 +55,22 @@ line1 = plt.scatter(indexX_1, indexY_1, s=2, c='k')
 plt.xlim(2000, t_span)
 plt.yticks(fontproperties='Times New Roman', size=14)
 plt.xticks(fontproperties='Times New Roman', size=14)
-plt.xticks(xr, range(100, real_t_span, 200))
+# plt.xticks(xr, range(100, real_t_span, 200))
 plt.ylabel('ng1', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 plt.subplot(322)
 line2 = plot(ng1_array[10], c='k')
 plt.yticks(fontproperties='Times New Roman', size=14)
 plt.xticks(fontproperties='Times New Roman', size=14)
-plt.xlim(2000, t_span)
-plt.xticks(xr, range(100, real_t_span, 200))
+# plt.xlim(2000, t_span)
+# plt.xticks(xr, range(100, real_t_span, 200))
 plt.xlabel('时间(ms)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 plt.ylabel('ng1膜电位(mV)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 plt.subplot(323)
 line3 = plt.scatter(indexX_2, indexY_2, s=2, c='k')
 plt.yticks(fontproperties='Times New Roman', size=14)
 plt.xticks(fontproperties='Times New Roman', size=14)
-plt.xlim(2000, t_span)
-plt.xticks(xr, range(100, real_t_span, 200))
+# plt.xlim(2000, t_span)
+# plt.xticks(xr, range(100, real_t_span, 200))
 plt.ylabel('ng2', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 # plt.title('(b) pd=0')
 plt.subplot(324)
@@ -86,14 +86,14 @@ line5 = plt.scatter(indexX_3, indexY_3, s=2, c='k')
 plt.yticks(fontproperties='Times New Roman', size=14)
 plt.xticks(fontproperties='Times New Roman', size=14)
 plt.xlim(2000, t_span)
-plt.xticks(xr, range(100, real_t_span, 200))
+# plt.xticks(xr, range(100, real_t_span, 200))
 plt.ylabel('ng3', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 plt.subplot(326)
 line6 = plot(ng3_array[10], c='k')
 plt.yticks(fontproperties='Times New Roman', size=14)
 plt.xticks(fontproperties='Times New Roman', size=14)
 plt.xlim(2000, t_span)
-plt.xticks(xr, range(100, real_t_span, 200))
+# plt.xticks(xr, range(100, real_t_span, 200))
 plt.xlabel('时间(ms)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 plt.ylabel('ng3膜电位(mV)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 fig1.tight_layout()
