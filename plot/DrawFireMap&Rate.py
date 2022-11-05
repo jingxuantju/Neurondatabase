@@ -202,32 +202,34 @@ if __name__ == '__main__':
     fig5 = plt.figure(figsize=(6, 8), dpi=100)
     gs = gridspec.GridSpec(15, 2)
 
-    plt.subplot(311)
+    plt.subplot(211)
     # plt.title('(a) pd=0')
     line1 = plt.scatter(indexX_STN, indexY_STN, s=2, c='k')
     plt.xlim(2000, t_span)
     plt.yticks(fontproperties='Times New Roman', size=14)
     plt.xticks(fontproperties='Times New Roman', size=14)
     plt.xticks(xr, range(200, real_t_span, 200))
-    plt.ylabel('STN', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
+    plt.xlabel('时间（ms）', fontdict={'family': 'SimHei', 'size': 14})
+    plt.ylabel('神经元索引', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 
-    plt.subplot(312)
-    for i in range(100):
-        plot(V_STN_array[i], c='tomato', linewidth=0.3)
-    plt.yticks(fontproperties='Times New Roman', size=14)
-    plt.xticks(fontproperties='Times New Roman', size=14)
-    plt.xlim(2000, t_span)
-    plt.xticks(xr, range(200, real_t_span, 200))
-    # plt.xlabel('时间(ms)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
-    plt.ylabel('STN电位(mV)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
+    # plt.subplot(312)
+    # for i in range(100):
+    #     plot(V_STN_array[i], c='tomato', linewidth=0.3)
+    # plt.yticks(fontproperties='Times New Roman', size=14)
+    # plt.xticks(fontproperties='Times New Roman', size=14)
+    # plt.xlim(2000, t_span)
+    # plt.xticks(xr, range(200, real_t_span, 200))
+    # # plt.xlabel('时间(ms)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
+    # plt.ylabel('STN电位(mV)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 
-    plt.subplot(313)
+    plt.subplot(212)
     # plt.title('(b) pd=0')
     plt.fill_between(range(tw), SS_stn2, color="royalblue", alpha=0.4)
     plt.yticks(fontproperties='Times New Roman', size=14)
     plt.xticks(fontproperties='Times New Roman', size=14)
     # plt.xlim(2000, t_span)
     # plt.xticks(xr, range(200, real_t_span, 200))
+    plt.xlabel('采样窗口时间', fontdict={'family': 'SimHei', 'size': 14})
     plt.ylabel('STN放电密度', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 
     fig5.tight_layout()

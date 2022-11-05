@@ -78,7 +78,7 @@ line4 = plot(ng2_array[10], c='k')
 plt.yticks(fontproperties='Times New Roman', size=14)
 plt.xticks(fontproperties='Times New Roman', size=14)
 plt.xlim(2000, t_span)
-plt.xticks(xr, range(100, real_t_span, 200))
+# plt.xticks(xr, range(num, real_t_span, 200))
 plt.xlabel('时间(ms)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 plt.ylabel('ng2膜电位(mV)', fontdict={'family': 'SimHei', 'size': 14})  # label = name of label
 plt.subplot(325)
@@ -103,20 +103,20 @@ V_mean_1 = np.mean(ng1_array, axis=0)
 V_mean_2 = np.mean(ng2_array, axis=0)
 V_mean_3 = np.mean(ng3_array, axis=0)
 
-sampling_rate = 1024
-wavename = 'cgau8'
-totalscal = 256
-fc = pywt.central_frequency(wavename)
-cparam = 2 * fc * totalscal
-scales = cparam / np.arange(totalscal, 1, -1)
-[cwtmatr1, frequencies1] = pywt.cwt(V_mean_1, scales, wavename, 1.0 / sampling_rate)
-[cwtmatr2, frequencies2] = pywt.cwt(V_mean_2, scales, wavename, 1.0 / sampling_rate)
-[cwtmatr3, frequencies3] = pywt.cwt(V_mean_3, scales, wavename, 1.0 / sampling_rate)
-fig2 = plt.figure(figsize=(6, 8), dpi=100)
-plt.subplot(311)
-plt.contourf(range(t_span), frequencies1, abs(cwtmatr1))
-plt.subplot(312)
-plt.contourf(range(t_span), frequencies2, abs(cwtmatr2))
-plt.subplot(313)
-plt.contourf(range(t_span), frequencies3, abs(cwtmatr3))
-fig2.tight_layout()
+# sampling_rate = 1024
+# wavename = 'cgau8'
+# totalscal = 256
+# fc = pywt.central_frequency(wavename)
+# cparam = 2 * fc * totalscal
+# scales = cparam / np.arange(totalscal, 1, -1)
+# [cwtmatr1, frequencies1] = pywt.cwt(V_mean_1, scales, wavename, 1.0 / sampling_rate)
+# [cwtmatr2, frequencies2] = pywt.cwt(V_mean_2, scales, wavename, 1.0 / sampling_rate)
+# [cwtmatr3, frequencies3] = pywt.cwt(V_mean_3, scales, wavename, 1.0 / sampling_rate)
+# fig2 = plt.figure(figsize=(6, 8), dpi=100)
+# plt.subplot(311)
+# plt.contourf(range(t_span), frequencies1, abs(cwtmatr1))
+# plt.subplot(312)
+# plt.contourf(range(t_span), frequencies2, abs(cwtmatr2))
+# plt.subplot(313)
+# plt.contourf(range(t_span), frequencies3, abs(cwtmatr3))
+# fig2.tight_layout()
