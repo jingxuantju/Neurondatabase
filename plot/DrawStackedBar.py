@@ -41,11 +41,11 @@ names = ['A', 'B', 'C', 'D', 'E']
 barWidth = 1
 
 # Create brown bars
-plt.bar(r, sn_src, color='plum', edgecolor='white', width=barWidth)
+plt.bar(r, sn_src, color='mistyrose', edgecolor='white', width=barWidth)
 # Create green bars (middle), on top of the first ones
-plt.bar(r, ge_src, bottom=sn_src, color='palevioletred', edgecolor='white', width=barWidth)
+plt.bar(r, ge_src, bottom=sn_src, color='indianred', edgecolor='white', width=barWidth)
 # Create green bars (top)
-plt.bar(r, gi_src, bottom=bars, color='darksalmon', edgecolor='white', width=barWidth)
+plt.bar(r, gi_src, bottom=bars, color='lightsteelblue', edgecolor='white', width=barWidth)
 
 # Custom X axis
 
@@ -53,6 +53,7 @@ plt.yticks(fontproperties='Times New Roman', size=14)
 plt.xticks(fontproperties='Times New Roman', size=14)
 plt.title('各核团连接关系', fontdict={'family': 'SimHei', 'size': 16})
 plt.xlabel("目的核团", fontdict={'family': 'SimHei', 'size': 14})
+plt.ylabel("源核团", fontdict={'family': 'SimHei', 'size': 14})
 
 # Show graphic
 plt.show()

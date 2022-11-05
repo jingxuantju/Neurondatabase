@@ -8,13 +8,19 @@ import matplotlib.pyplot as plt
 df = pd.DataFrame(np.random.random((10,10)), columns=["a","b","c","d","e","f","g","h","i","j"])
 
 # plot using a color palette
+cmap = sns.diverging_palette(200,20,sep=20,as_cmap=True)
+# sns.heatmap(df, cmap=cmap)
+sns.heatmap(df, cmap="vlag")
+# sns.heatmap(df, cmap="RdBu_r")
 # sns.heatmap(df, cmap="YlGnBu")
 # sns.heatmap(df, cmap="BuPu")
 # sns.heatmap(df, cmap="Greens")
-sns.heatmap(df, cmap="Blues")
+# sns.heatmap(df, cmap="Blues")
 plt.yticks(fontproperties='Times New Roman', size=14)
 plt.xticks(fontproperties='Times New Roman', size=14)
 plt.title('权值矩阵', fontdict={'family': 'SimHei', 'size': 16})
+plt.ylabel('前层神经元', fontdict={'family': 'SimHei', 'size': 14})
+plt.xlabel('后层神经元', fontdict={'family': 'SimHei', 'size': 14})
 font1 = {'family': 'Times New Roman', 'size': 16}
 # cb = plt.colorbar(prop=font1)
 # cb = plt.colorbar(mappable=map, cax=None, ax=None)
