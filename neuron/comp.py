@@ -175,7 +175,7 @@ class synapseNeuron(Component):
             self.output += self.gs[i] * (Vpre - Vpost[i])
         return self.output
 
-class EsynapseNeuron(Component):
+class ExcsynapseNeuron(Component):
     tab = 'houmo'
     def __init__(self, manager, name, gs, E=-80, ts=10):
         super().__init__(manager, name=name)
@@ -213,6 +213,7 @@ class ExcsynapseNeuron(Component):
     def function(self):
         Isyn = 0
         Vpost = []
+        Vpre = 0
         for i in range(len(self.inputs_tab)):
             if self.inputs_tab[i] == synapseNeuron.tab:
                 Vpost.append(self.inputs[i])
