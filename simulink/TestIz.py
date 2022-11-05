@@ -17,8 +17,8 @@ if __name__ == '__main__':
 
     manager = Manager()
     # comp1 = MLNeuron(manager, 'comp1', 50)
-    comp1 = IzhikevichNeuron1(manager, 'comp1', 1, 0.01, 0.25, -65, 2)
-    result = manager.start_stimulation(30000)
+    comp1 = IzhikevichNeuron1(manager, 'comp1', 10, 0.01, 0.25, -65,0.5)
+    result = manager.start_stimulation(3000)
     COMP4_RESULT = []
     COMP5_RESULT = []
     COMP6_RESULT = []
