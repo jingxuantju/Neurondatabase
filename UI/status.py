@@ -41,6 +41,7 @@ class NewWindow(QWidget):
         value = newWin.ui.nameEdit.text()
         window.ui.table.insertRow(0)
         window.ui.table.setItem(0, 0, QTableWidgetItem(value))
+        window.ui.table.setItem(0, 1, QTableWidgetItem('Izhikevich'))
 
 
 class NewWindow1(QWidget):

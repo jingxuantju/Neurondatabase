@@ -1,6 +1,9 @@
 from simulink.component import Component, Manager
 import math
 from neuron.neuron import Neuron
+import numpy as np
+import queue
+import copy
 
 class HHsomaNeuron(Neuron):
     def __init__(self, manager, name, I):
@@ -61,8 +64,7 @@ class NaIonHHComponent(Component):
         self.output = output
         return self.output
 
-    def record(self):
-        return self.output, self.m, self.h
+
 
 class KIonHHComponent(Component):
     def __init__(self, manager, name, gk=36,vk=-12):
@@ -206,7 +208,7 @@ class ExcsynapseNeuron(Component):
         self.gs = gs
         self.dt = 0.1
         self.tao = tao
-        self.Is = 0
+        self.Is = 1
 
     def function(self):
         Isyn = 0
@@ -438,19 +440,155 @@ class IleakIonComponent(Component):
         return self.output
 
 
-class hLNComponent(Component):
-    def __init__(self, manager, name, I):
+class hLNSomaComponent(Component):
+    def __init__(self, manager, name,taoE,taoI):
         super().__init__(manager, name=name)
-        self.I = I
+        self.tao_e = taoE
+        self.tao_i = taoI
+        self.output_soma = 0
+        self.kernel_time = 200
+        self.v = 0
+        # self.ed_spk_e_history = []
+        # self.ed_spk_i_history = []
+        # self.id_spk_e_history = []
+        # self.id_spk_i_history = []
+        self.queueE = []
+        self.queueI = []
+        self.kernelE = self.gen_kernel_hln(self.tao_e, self.kernel_time)
+        self.kernelI = self.gen_kernel_hln(self.tao_i, self.kernel_time)
 
     def function(self):
-        din = sum(self.inputs)
+        v = 0
+        Isyn = 0
+        spileE = 0
+        spileI = 0
+        for i in range(len(self.inputs_tab)):
+            if self.inputs_tab[i] == "I":
+                Isyn += self.inputs[i]
+            elif self.inputs_tab[i] == "self":
+                v += self.inputs[i]
+            elif self.inputs_tab[i] == "V":
+                v += self.inputs[i]
+            elif self.inputs_tab[i] == "spikeE":
+                spileE += self.inputs[i]
+            elif self.inputs_tab[i] == "spikeI":
+                spileI += self.inputs[i]
+        if (len(self.queueE) == self.kernel_time):
+            self.queueE.pop(0)
+        if (len(self.queueI) == self.kernel_time):
+            self.queueI.pop(0)
+        self.queueE.append(spileE)
+        self.queueI.append(spileI)
+        for i in range(0, len(self.queueE) - 1):
+            # print(i)
+            # print(len(self.queueE))
+            v += (self.queueE[i] * self.kernelE[i])
+        for i in range(0, len(self.queueI) - 1):
+            v -= (self.queueI[i] * self.kernelI[i])
+        # self.Isyn_soma_e = np.convolve(self.id_spk_e_history, kernel_soma_e, 'full')
+        # self.Isyn_soma_i = np.convolve(self.id_spk_i_history, kernel_soma_i, 'full')
         self.inputs.clear()
-
-        self.output = din
+        self.v = v
+        self.output_soma = self.sigmoid_hln(v)
+        self.output = self.possion_hln(self.output_soma)
         return self.output
 
+    def gen_kernel_hln(self, tao, kernel_time):
+        kernel = []
+        for time in range(1, kernel_time):
+            k = time * 0.1 / tao * math.exp(1 - time * 0.1 / tao)
+            kernel.append(k)
+        return kernel
 
+    def possion_hln(self, possibility):
+        # ATTENTION: possibility must belong to [0,1], and better belong to [0,0.5]
+        possibility_and_comp = np.array([1 - possibility, possibility])
+        spk = np.random.choice([0, 1], p=possibility_and_comp.ravel())
+        return spk
+
+    def sigmoid_hln(self, x):
+        z = math.exp(-x)
+        sig = 1 / (1 + z)
+        return sig
+
+    def record(self):
+        return self.output, self.output_soma, self.v
+
+
+
+class hLNdendriteComponent(Component):
+    def __init__(self, manager, name,taoE,taoI):
+        super().__init__(manager, name=name)
+        self.tao_e = taoE
+        self.tao_i = taoI
+        self.output_soma = 0
+        self.kernel_time = 200
+        self.v = 0
+        # self.ed_spk_e_history = []
+        # self.ed_spk_i_history = []
+        # self.id_spk_e_history = []
+        # self.id_spk_i_history = []
+        self.queueE = []
+        self.queueI = []
+        self.kernelE = self.gen_kernel_hln(self.tao_e, self.kernel_time)
+        self.kernelI = self.gen_kernel_hln(self.tao_i, self.kernel_time)
+
+    def function(self):
+        v = 0
+        Isyn = 0
+        spileE = 0
+        spileI = 0
+        for i in range(len(self.inputs_tab)):
+            if self.inputs_tab[i] == "I":
+                Isyn += self.inputs[i]
+            elif self.inputs_tab[i] == "self":
+                v += self.inputs[i]
+            elif self.inputs_tab[i] == "V":
+                v += self.inputs[i]
+            elif self.inputs_tab[i] == "spikeE":
+                spileE += self.inputs[i]
+            elif self.inputs_tab[i] == "spikeI":
+                spileI += self.inputs[i]
+        if (len(self.queueE) == self.kernel_time):
+            self.queueE.pop(0)
+        if (len(self.queueI) == self.kernel_time):
+            self.queueI.pop(0)
+        self.queueE.append(spileE)
+        self.queueI.append(spileI)
+        for i in range(0, len(self.queueE) - 1):
+            # print(i)
+            # print(len(self.queueE))
+            v += (self.queueE[i] * self.kernelE[i])
+        for i in range(0, len(self.queueI) - 1):
+            v -= (self.queueI[i] * self.kernelI[i])
+        # self.Isyn_soma_e = np.convolve(self.id_spk_e_history, kernel_soma_e, 'full')
+        # self.Isyn_soma_i = np.convolve(self.id_spk_i_history, kernel_soma_i, 'full')
+        self.inputs.clear()
+        self.v = v
+        self.output_soma = self.sigmoid_hln(v)
+
+        return self.output
+
+    def gen_kernel_hln(self, tao, kernel_time):
+        kernel = []
+        for time in range(1, kernel_time):
+            k = time * 0.1 / tao * math.exp(1 - time * 0.1 / tao)
+            kernel.append(k)
+        return kernel
+
+    def possion_hln(self, possibility):
+        # ATTENTION: possibility must belong to [0,1], and better belong to [0,0.5]
+        possibility_and_comp = np.array([1 - possibility, possibility])
+        spk = np.random.choice([0, 1], p=possibility_and_comp.ravel())
+        return spk
+
+    def sigmoid_hln(self, x):
+        z = math.exp(-x)
+        sig = 1 / (1 + z)
+        return sig
+
+    def record(self):
+        return self.output, self.output_soma, self.v
 
 class addComponent(Component):
     def __init__(self, manager, name, I):

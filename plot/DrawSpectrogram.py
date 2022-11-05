@@ -20,7 +20,7 @@ from neuron.neuron import *
 
 
 if __name__ == '__main__':
-    t_span = 30000
+    t_span = 1000
     session_t_span = 10000
     real_t_span = 3000
     num = 100
@@ -90,25 +90,25 @@ if __name__ == '__main__':
             a1 = random.randint(0, 10)
             a2 = random.randint(0, 10)
             a3 = random.randint(0, 10)
-            if (a1 < 4):
+            if (a1 < 10):
                 manager.link_output_input(ng1_syn_ng1[i], ng1[j], tab='I')
                 manager.link_output_input(ng1[j], ng1_syn_ng1[i], tab='houmo')
-            if (a2 < 4):
+            if (a2 < 10):
                 manager.link_output_input(ng1_syn_ng2[i], ng2[j], tab='I')
                 manager.link_output_input(ng2[j], ng1_syn_ng2[i], tab='houmo')
-            if (a3 < 4):
+            if (a3 < 10):
                 manager.link_output_input(ng1_syn_ng3[i], ng3[j], tab='I')
                 manager.link_output_input(ng3[j], ng1_syn_ng3[i], tab='houmo')
             b1 = random.randint(0, 10)
             b2 = random.randint(0, 10)
             b3 = random.randint(0, 10)
-            if (b1 < 4):
+            if (a2 < 10):
                 manager.link_output_input(ng2_syn_ng2[i], ng2[j], tab='I')
                 manager.link_output_input(ng2[j], ng2_syn_ng2[i], tab='houmo')
-            if (b2 < 4):
+            if (a3 < 10):
                 manager.link_output_input(ng2_syn_ng3[i], ng3[j], tab='I')
                 manager.link_output_input(ng3[j], ng2_syn_ng3[i], tab='houmo')
-            if (b3 < 4):
+            if (a1 < 10):
                 manager.link_output_input(ng2_syn_ng1[i], ng1[j], tab='I')
                 manager.link_output_input(ng1[j], ng2_syn_ng1[i], tab='houmo')
             c1 = random.randint(0, 10)
@@ -156,21 +156,25 @@ if __name__ == '__main__':
     fig1 = plt.figure(figsize=(6, 8), dpi=100)
     plt.title('正常', fontdict={'family': 'SimHei', 'size': 14})
     plt.subplot(311)
-    plt.plot(V_mean_1, c='k', linewidth=2)
+    # plt.plot(V_mean_1, c='k', linewidth=2)
+    plt.plot(ng1_array[1], c='k', linewidth=2)
+
     # plt.xlim(2000, t_span)
     # plt.ylim(-70, -45)
     plt.yticks(fontproperties='Times New Roman', size=14)
     plt.xticks(fontproperties='Times New Roman', size=14)
     plt.ylabel('ng1', fontdict={'family': 'SimHei', 'size': 14})
     plt.subplot(312)
-    plt.plot(V_mean_2, c='k', linewidth=2)
+    # plt.plot(V_mean_2, c='k', linewidth=2)
+    plt.plot(ng2_array[1], c='k', linewidth=2)
     # plt.xlim(2000, t_span)
     # plt.ylim(-70, -54)
     plt.yticks(fontproperties='Times New Roman', size=14)
     plt.xticks(fontproperties='Times New Roman', size=14)
     plt.ylabel('ng1', fontdict={'family': 'SimHei', 'size': 14})
     plt.subplot(313)
-    plt.plot(V_mean_3, c='k', linewidth=2)
+    # plt.plot(V_mean_3, c='k', linewidth=2)
+    plt.plot(ng3_array[1], c='k', linewidth=2)
     # plt.xlim(2000, t_span)
     # plt.ylim(-70, -40)
     plt.yticks(fontproperties='Times New Roman', size=14)
@@ -196,3 +200,4 @@ if __name__ == '__main__':
     # plt.contourf(range(t_span), frequencies1, abs(cwtmatr2))
     plt.subplot(313)
     plt.contourf(range(t_span), frequencies1, abs(cwtmatr3))
+    plt.show()

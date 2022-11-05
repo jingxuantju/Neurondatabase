@@ -4,6 +4,7 @@ from neuron.comp import *
 import matplotlib.pyplot as plt
 from pylab import *
 mpl.rcParams['font.sans-serif'] = ['SimSun']
+matplotlib.rcParams['axes.unicode_minus']=False
 
 if __name__ == '__main__':
     class SelfAddingUnit(Component):
@@ -37,9 +38,9 @@ if __name__ == '__main__':
     COMP7_RESULT = []
     for dictionary in result:
         COMP4_RESULT.append(dictionary['soma1'])
-        COMP5_RESULT.append(dictionary['Ina1'])
-        COMP6_RESULT.append(dictionary['Ik1'])
-        COMP7_RESULT.append(dictionary['Il1'])
+        # COMP5_RESULT.append(dictionary['Ina1'])
+        # COMP6_RESULT.append(dictionary['Ik1'])
+        # COMP7_RESULT.append(dictionary['Il1'])
     figure = plt.figure()
     plt.plot(COMP4_RESULT)
     # line1, = plt.plot(COMP5_RESULT)
@@ -47,9 +48,8 @@ if __name__ == '__main__':
     # line3, = plt.plot(COMP7_RESULT)
     # plt.legend(handles=[line1, line2, line3], labels=['Ina', 'Ik', 'Il'], loc='upper right', fontsize=16)
     plt.xlabel('时间(ms)', fontsize=18)  # label = name of label
-    # plt.ylabel('电流(mA)', fontsize=18)  # label = name of label
-    plt.ylabel('电压(mV)', fontsize=18)  # label = name of label
-    plt.title('(a)')
+    plt.ylabel('电流(mA)', fontsize=18)  # label = name of label
+    # plt.ylabel('电压(mV)', fontsize=18)  # label = name of label
     figure.show()
     plt.show()
     print(result)

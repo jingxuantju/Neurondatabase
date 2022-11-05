@@ -158,7 +158,8 @@ class simplePRNeuron(Neuron):
         return self.output
 
     def record(self):
-        return self.output, self.Ina, self.Ik, self.Isl, self.Idl, self.m_, self.n_, self.n
+        return self.output
+            # , self.Ina, self.Ik, self.Isl, self.Idl, self.m_, self.n_, self.n
 
 # class PRNeuron(Neuron):
 #     def __init__(self, manager, name, Is, Id):
