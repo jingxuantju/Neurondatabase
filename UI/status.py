@@ -1,3 +1,4 @@
+from PySide2 import QtGui, QtCore
 from PySide2.QtWidgets import *
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtCore import QFile
@@ -15,6 +16,7 @@ from UI.globalV import *
 from plot.DrawPlot import *
 import scipy.io as scio
 from plot.DrawNetworkMap import *
+import photo.pictures_rc
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -332,7 +334,6 @@ if __name__ == '__main__':
     newWin1.ui.pushButton.clicked.connect(showsynpase)
     newWin1.ui.pushButton_4.clicked.connect(ISI)
     newWin1.ui.pushButton_6.clicked.connect(linkresult)
-
 
 
     # 显示窗口
